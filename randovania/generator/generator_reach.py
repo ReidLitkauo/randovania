@@ -2,6 +2,7 @@ from typing import Iterator
 
 from randovania.game_description.game_description import GameDescription
 from randovania.game_description.requirements.requirement_set import RequirementSet
+from randovania.game_description.requirements.requirement_list import RequirementList
 from randovania.game_description.world.node import Node, NodeContext
 from randovania.game_description.world.resource_node import ResourceNode
 from randovania.resolver.state import State
@@ -70,5 +71,5 @@ class GeneratorReach:
     def is_safe_node(self, node: Node) -> bool:
         raise NotImplementedError()
 
-    def unreachable_nodes_with_requirements(self) -> dict[Node, RequirementSet]:
+    def unsatisfied_requirement_list(self) -> Iterator[RequirementList]:
         raise NotImplementedError()

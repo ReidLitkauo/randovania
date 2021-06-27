@@ -154,20 +154,20 @@ class PlayerState:
         s = self.reach.state
 
         paths_to_be_opened = set()
-        for node, requirement in self.reach.unreachable_nodes_with_requirements().items():
-            for alternative in requirement.alternatives:
-                if any(r.negate or (r.resource.resource_type != ResourceType.ITEM
-                                    and not r.satisfied(s.resources, s.energy, self.game.resource_database))
-                       for r in alternative.values()):
-                    continue
-
-                paths_to_be_opened.add("* {}: {}".format(
-                    wl.node_name(node, with_world=True),
-                    " and ".join(sorted(
-                        r.pretty_text for r in alternative.values()
-                        if not r.satisfied(s.resources, s.energy, self.game.resource_database)
-                    ))
-                ))
+        # for node, requirement in self.reach.unreachable_nodes_with_requirements().items():
+        #     for alternative in requirement.alternatives:
+        #         if any(r.negate or (r.resource.resource_type != ResourceType.ITEM
+        #                             and not r.satisfied(s.resources, s.energy, self.game.resource_database))
+        #                for r in alternative.values()):
+        #             continue
+        #
+        #         paths_to_be_opened.add("* {}: {}".format(
+        #             wl.node_name(node, with_world=True),
+        #             " and ".join(sorted(
+        #                 r.pretty_text for r in alternative.values()
+        #                 if not r.satisfied(s.resources, s.energy, self.game.resource_database)
+        #             ))
+        #         ))
 
         teleporters = []
         for node in wl.iterate_nodes():
@@ -201,7 +201,7 @@ class PlayerState:
             ", ".join(name if quantity == 1 else f"{name} x{quantity}"
                       for name, quantity in sorted(pickups_by_name_and_quantity.items())),
             ", ".join(sorted(to_progress)),
-            "\n".join(accessible_nodes) if len(accessible_nodes) < 15 else f"{len(accessible_nodes)} nodes total",
+            "\n".join(accessible_nodes) if len(accessible_nodes) < 999 else f"{len(accessible_nodes)} nodes total",
             sum(1 for n in self.reach.iterate_nodes if self.reach.is_safe_node(n)),
             "\n".join(sorted(paths_to_be_opened)) or "None",
             "\n".join(teleporters) or "None",

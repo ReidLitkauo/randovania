@@ -14,7 +14,7 @@ from randovania.game_description.resources.pickup_entry import PickupEntry
 from randovania.game_description.resources.pickup_index import PickupIndex
 from randovania.game_description.world.node import NodeContext
 from randovania.game_description.world.node_identifier import NodeIdentifier
-from randovania.generator import reach_lib
+from randovania.generator import reach_lib, path_generator_reach
 from randovania.generator.filler import filler_logging
 from randovania.generator.filler.action import Action
 from randovania.generator.filler.filler_library import (
@@ -223,6 +223,8 @@ def retcon_playthrough_filler(rng: Random,
     actions_log = []
 
     while True:
+        path_generator_reach.PATH_GENERATOR_DEBUG = False
+
         all_locations_weighted = _calculate_all_pickup_indices_weight(player_states)
         current_player = _get_next_player(rng, player_states, all_locations_weighted)
         if current_player is None:
@@ -230,6 +232,8 @@ def retcon_playthrough_filler(rng: Random,
 
         weighted_actions = weighted_potential_actions(current_player, action_report, all_locations_weighted)
         action = select_weighted_action(rng, weighted_actions)
+
+        path_generator_reach.PATH_GENERATOR_DEBUG = True
 
         new_resources, new_pickups = action.split_pickups()
         new_pickups.sort()

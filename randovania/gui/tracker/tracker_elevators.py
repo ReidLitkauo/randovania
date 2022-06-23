@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import collections
-from typing import Optional, Dict, List
+from typing import Any
 
 from PySide6 import QtWidgets
 
@@ -16,12 +16,12 @@ from randovania.patching.prime import elevators
 from randovania.resolver.state import State
 
 
-class TrackerElevatorsWidget(QtWidgets.QDockWidget, TrackerComponent):
-    _elevator_id_to_combo: Dict[NodeIdentifier, QtWidgets.QComboBox]
+class TrackerElevatorsWidget(TrackerComponent):
+    _elevator_id_to_combo: dict[NodeIdentifier, QtWidgets.QComboBox]
 
     @classmethod
     def create_for(cls, game_description: GameDescription, configuration: BaseConfiguration,
-                   ) -> Optional[TrackerElevatorsWidget]:
+                   ) -> TrackerElevatorsWidget | None:
 
         if not hasattr(configuration, "elevators"):
             return None
@@ -50,7 +50,7 @@ class TrackerElevatorsWidget(QtWidgets.QDockWidget, TrackerComponent):
         self.root_widget.setWidget(self.scroll_contents)
 
         world_list = self.game_description.world_list
-        nodes_by_world: Dict[str, List[TeleporterNode]] = collections.defaultdict(list)
+        nodes_by_world: dict[str, list[TeleporterNode]] = collections.defaultdict(list)
 
         areas_to_not_change = {
             "Sky Temple Gateway",
@@ -112,9 +112,9 @@ class TrackerElevatorsWidget(QtWidgets.QDockWidget, TrackerComponent):
                 self._elevator_id_to_combo[world_list.identifier_for_node(node)] = combo
                 layout.addWidget(combo, i, 1)
 
-    def apply_previous_state(self, previous_state: dict) -> bool:
+    def decode_persisted_state(self, previous_state: dict) -> Any | None:
         try:
-            teleporters: Dict[NodeIdentifier, Optional[AreaIdentifier]] = {
+            return {
                 NodeIdentifier.from_json(item["teleporter"]): (
                     AreaIdentifier.from_json(item["data"])
                     if item["data"] is not None else None
@@ -122,8 +122,9 @@ class TrackerElevatorsWidget(QtWidgets.QDockWidget, TrackerComponent):
                 for item in previous_state["elevators"]
             }
         except (KeyError, AttributeError):
-            return False
+            return None
 
+    def apply_previous_state(self, teleporters: dict[NodeIdentifier, AreaIdentifier | None]) -> None:
         for teleporter, area_location in teleporters.items():
             combo = self._elevator_id_to_combo[teleporter]
             if area_location is None:
@@ -133,8 +134,6 @@ class TrackerElevatorsWidget(QtWidgets.QDockWidget, TrackerComponent):
                 if area_location == combo.itemData(i):
                     combo.setCurrentIndex(i)
                     break
-
-        return True
 
     def reset(self):
         for elevator in self._elevator_id_to_combo.values():
@@ -151,7 +150,7 @@ class TrackerElevatorsWidget(QtWidgets.QDockWidget, TrackerComponent):
             ],
         }
 
-    def fill_into_state(self, state: State) -> Optional[State]:
+    def fill_into_state(self, state: State) -> State | None:
         state.patches = state.patches.assign_elevators(
             (state.world_list.get_teleporter_node(teleporter), combo.currentData())
             for teleporter, combo in self._elevator_id_to_combo.items()

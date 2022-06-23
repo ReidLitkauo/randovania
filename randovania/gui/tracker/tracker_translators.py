@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Optional
+from typing import Any
 
 from PySide6 import QtWidgets
 
@@ -19,12 +19,12 @@ from randovania.layout.base.base_configuration import BaseConfiguration
 from randovania.resolver.state import State
 
 
-class TrackerTranslatorsWidget(QtWidgets.QDockWidget, TrackerComponent):
+class TrackerTranslatorsWidget(TrackerComponent):
     _translator_gate_to_combo: dict[NodeIdentifier, QtWidgets.QComboBox]
 
     @classmethod
     def create_for(cls, game_description: GameDescription, configuration: BaseConfiguration,
-                   ) -> Optional[TrackerTranslatorsWidget]:
+                   ) -> TrackerTranslatorsWidget | None:
         if configuration.game != RandovaniaGame.METROID_PRIME_ECHOES:
             return None
         assert isinstance(configuration, EchoesConfiguration)
@@ -81,16 +81,19 @@ class TrackerTranslatorsWidget(QtWidgets.QDockWidget, TrackerComponent):
         for elevator in self._translator_gate_to_combo.values():
             elevator.setCurrentIndex(0)
 
-    def apply_previous_state(self, previous_state: dict) -> bool:
+    def decode_persisted_state(self, previous_state: dict) -> Any | None:
         try:
-            configurable_nodes = {
+            return {
                 NodeIdentifier.from_string(identifier): (LayoutTranslatorRequirement(item)
                                                          if item is not None
                                                          else None)
                 for identifier, item in previous_state["configurable_nodes"].items()
             }
         except (KeyError, AttributeError):
-            return False
+            return None
+
+    def apply_previous_state(self, configurable_nodes: dict[NodeIdentifier, LayoutTranslatorRequirement | None],
+                             ) -> None:
 
         for identifier, requirement in configurable_nodes.items():
             combo = self._translator_gate_to_combo[identifier]
@@ -98,8 +101,6 @@ class TrackerTranslatorsWidget(QtWidgets.QDockWidget, TrackerComponent):
                 if requirement == combo.itemData(i):
                     combo.setCurrentIndex(i)
                     break
-
-        return True
 
     def persist_current_state(self) -> dict:
         return {
@@ -109,11 +110,11 @@ class TrackerTranslatorsWidget(QtWidgets.QDockWidget, TrackerComponent):
             },
         }
 
-    def fill_into_state(self, state: State) -> Optional[State]:
+    def fill_into_state(self, state: State) -> State | None:
         for gate, item in self._translator_gate_to_combo.items():
             scan_visor = self.game_description.resource_database.get_item("Scan")
 
-            requirement: Optional[LayoutTranslatorRequirement] = item.currentData()
+            requirement: LayoutTranslatorRequirement | None = item.currentData()
             if requirement is None:
                 translator_req = Requirement.impossible()
             else:

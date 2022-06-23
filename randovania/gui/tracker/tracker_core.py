@@ -81,7 +81,6 @@ class TrackerWindow(QtWidgets.QMainWindow, Ui_TrackerWindow):
     game_configuration: BaseConfiguration
     persistence_path: Path
     _initial_state: State
-    _elevator_id_to_combo: Dict[NodeIdentifier, QtWidgets.QComboBox]
     _starting_nodes: Set[ResourceNode]
 
     # UI tools
@@ -142,8 +141,6 @@ class TrackerWindow(QtWidgets.QMainWindow, Ui_TrackerWindow):
 
         self.setup_pickups_box(player_pool.pickups)
         self.setup_possible_locations_tree()
-        self.setup_elevators()
-        self.setup_translator_gates()
 
         # Map
         for world in sorted(self.game_description.world_list.worlds, key=lambda x: x.name):
@@ -198,27 +195,10 @@ class TrackerWindow(QtWidgets.QMainWindow, Ui_TrackerWindow):
             if needs_starting_location:
                 starting_location = AreaIdentifier.from_json(previous_state["starting_location"])
 
-            teleporters: dict[NodeIdentifier, AreaIdentifier | None] = {
-                NodeIdentifier.from_json(item["teleporter"]): (
-                    AreaIdentifier.from_json(item["data"])
-                    if item["data"] is not None else None
-                )
-                for item in previous_state["elevators"]
-            }
         except (KeyError, AttributeError):
             return False
 
         self.setup_starting_location(starting_location)
-
-        for teleporter, area_location in teleporters.items():
-            combo = self._elevator_id_to_combo[teleporter]
-            if area_location is None:
-                combo.setCurrentIndex(0)
-                continue
-            for i in range(combo.count()):
-                if area_location == combo.itemData(i):
-                    combo.setCurrentIndex(i)
-                    break
 
         self.bulk_change_quantity(quantity_to_change)
         self._add_new_actions(previous_actions)
@@ -239,9 +219,6 @@ class TrackerWindow(QtWidgets.QMainWindow, Ui_TrackerWindow):
         while len(self._actions) > 1:
             self._actions.pop()
             self.actions_list.takeItem(len(self._actions))
-
-        for elevator in self._elevator_id_to_combo.values():
-            elevator.setCurrentIndex(0)
 
         self._refresh_for_new_action()
 
@@ -416,13 +393,6 @@ class TrackerWindow(QtWidgets.QMainWindow, Ui_TrackerWindow):
                         pickup.name: quantity
                         for pickup, quantity in self._collected_pickups.items()
                     },
-                    "elevators": [
-                        {
-                            "teleporter": teleporter.as_json,
-                            "data": combo.currentData().as_json if combo.currentIndex() > 0 else None
-                        }
-                        for teleporter, combo in self._elevator_id_to_combo.items()
-                    ],
                     "starting_location": world_list.identifier_for_node(self._initial_state.node
                                                                         ).area_identifier.as_json,
                 },
@@ -459,77 +429,6 @@ class TrackerWindow(QtWidgets.QMainWindow, Ui_TrackerWindow):
                     if node.is_resource_node:
                         node_item.setFlags(node_item.flags() & ~Qt.ItemIsUserCheckable)
                     self._node_to_item[node] = node_item
-
-    def setup_elevators(self):
-        self._elevator_id_to_combo = {}
-
-        if not hasattr(self.game_configuration, "elevators"):
-            return
-
-        elevators_config: TeleporterConfiguration = getattr(self.game_configuration, "elevators")
-
-        world_list = self.game_description.world_list
-        nodes_by_world: dict[str, list[TeleporterNode]] = collections.defaultdict(list)
-
-        areas_to_not_change = {
-            "Sky Temple Gateway",
-            "Sky Temple Energy Controller",
-            "Aerie Transport Station",
-            "Aerie",
-        }
-        targets = {}
-        for world, area, node in world_list.all_worlds_areas_nodes:
-            if isinstance(node, TeleporterNode) and node.editable and area.name not in areas_to_not_change:
-                name = world.correct_name(area.in_dark_aether)
-                nodes_by_world[name].append(node)
-
-                location = AreaIdentifier(world.name, area.name)
-                targets[elevators.get_short_elevator_or_area_name(self.game_configuration.game, world_list, location,
-                                                                  True)] = location
-
-        if elevators_config.mode == TeleporterShuffleMode.ONE_WAY_ANYTHING:
-            targets = {}
-            for world in world_list.worlds:
-                for area in world.areas:
-                    name = world.correct_name(area.in_dark_aether)
-                    targets[f"{name} - {area.name}"] = AreaIdentifier(world.name, area.name)
-
-        combo_targets = sorted(targets.items(), key=lambda it: it[0])
-
-        for world_name in sorted(nodes_by_world.keys()):
-            nodes = nodes_by_world[world_name]
-            nodes_locations = [world_list.identifier_for_node(node).area_location
-                               for node in nodes]
-            nodes_names = [elevators.get_short_elevator_or_area_name(self.game_configuration.game, world_list,
-                                                                     location, False)
-                           for location in nodes_locations]
-
-            group = QtWidgets.QGroupBox(self.elevators_scroll_contents)
-            group.setTitle(world_name)
-            self.elevators_scroll_layout.addWidget(group)
-            layout = QtWidgets.QGridLayout(group)
-
-            for i, (node, location, name) in enumerate(sorted(zip(nodes, nodes_locations, nodes_names),
-                                                              key=lambda it: it[2])):
-                node_name = QtWidgets.QLabel(group)
-                node_name.setText(name)
-                node_name.setWordWrap(True)
-                node_name.setMinimumWidth(75)
-                layout.addWidget(node_name, i, 0)
-
-                combo = QtWidgets.QComboBox(group)
-                if elevators_config.is_vanilla:
-                    combo.addItem("Vanilla", node.default_connection)
-                    combo.setEnabled(False)
-                else:
-                    combo.addItem("Undefined", None)
-                    for target_name, connection in combo_targets:
-                        combo.addItem(target_name, connection)
-
-                combo.setMinimumContentsLength(11)
-                combo.currentIndexChanged.connect(self.update_locations_tree_for_reachable_nodes)
-                self._elevator_id_to_combo[world_list.identifier_for_node(node)] = combo
-                layout.addWidget(combo, i, 1)
 
     def setup_starting_location(self, area_location: AreaIdentifier | None):
         world_list = self.game_description.world_list
@@ -693,11 +592,6 @@ class TrackerWindow(QtWidgets.QMainWindow, Ui_TrackerWindow):
         state = self._initial_state.copy()
         if self._actions:
             state.node = self._actions[-1]
-
-        state.patches = state.patches.assign_elevators(
-            (state.world_list.get_teleporter_node(teleporter), combo.currentData())
-            for teleporter, combo in self._elevator_id_to_combo.items()
-        )
 
         for pickup, quantity in self._collected_pickups.items():
             for _ in range(quantity):

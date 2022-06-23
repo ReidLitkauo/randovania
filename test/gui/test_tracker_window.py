@@ -7,7 +7,7 @@ import pytest
 
 from randovania.games.prime2.layout.echoes_configuration import EchoesConfiguration
 from randovania.games.prime2.layout.translator_configuration import LayoutTranslatorRequirement
-from randovania.gui import tracker_window
+from randovania.gui.tracker import tracker_core
 from randovania.layout.lib.teleporters import TeleporterShuffleMode
 from randovania.layout.versioned_preset import VersionedPreset
 

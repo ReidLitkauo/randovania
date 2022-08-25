@@ -9,6 +9,7 @@ from randovania.game_description.game_description import GameDescription
 from randovania.game_description.world.area_identifier import AreaIdentifier
 from randovania.game_description.world.node_identifier import NodeIdentifier
 from randovania.game_description.world.teleporter_node import TeleporterNode
+from randovania.generator.filler.runner import PlayerPool
 from randovania.gui.tracker.tracker_component import TrackerComponent
 from randovania.layout.base.base_configuration import BaseConfiguration
 from randovania.layout.lib.teleporters import TeleporterShuffleMode, TeleporterConfiguration
@@ -20,7 +21,7 @@ class TrackerElevatorsWidget(TrackerComponent):
     _elevator_id_to_combo: dict[NodeIdentifier, QtWidgets.QComboBox]
 
     @classmethod
-    def create_for(cls, game_description: GameDescription, configuration: BaseConfiguration,
+    def create_for(cls, player_pool: PlayerPool, configuration: BaseConfiguration,
                    ) -> TrackerElevatorsWidget | None:
 
         if not hasattr(configuration, "elevators"):
@@ -29,7 +30,7 @@ class TrackerElevatorsWidget(TrackerComponent):
         elevators_config = getattr(configuration, "elevators")
         assert isinstance(elevators_config, TeleporterConfiguration)
 
-        return cls(game_description, elevators_config)
+        return cls(player_pool.game, elevators_config)
 
     def __init__(self, game_description: GameDescription, elevators_config: TeleporterConfiguration):
         super().__init__()

@@ -1,99 +1,65 @@
-import logging
+from typing import Any
 
-import matplotlib.pyplot as plt
-import networkx
 from PySide6 import QtWidgets
-from matplotlib.axes import Axes
-from matplotlib.backends.backend_qt import NavigationToolbar2QT as NavigationToolbar
-from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
-from matplotlib.figure import Figure
 
-from randovania.game_description.world.dock_node import DockNode
-from randovania.game_description.world.node import Node
-from randovania.game_description.world.world import World
-from randovania.game_description.world.world_list import WorldList
+from randovania.game_description.game_description import GameDescription
+from randovania.gui.tracker.tracker_component import TrackerComponent
+from randovania.gui.tracker.tracker_graph_map_widget import MatplotlibWidget
+from randovania.gui.tracker.tracker_state import TrackerState
 from randovania.resolver.state import State
 
 
-class MatplotlibWidget(QtWidgets.QWidget):
-    ax: Axes
+class TrackerGraphMap(TrackerComponent):
+    _last_state: TrackerState
 
-    def __init__(self, parent, world_list: WorldList):
-        super().__init__(parent)
+    def __init__(self, game_description: GameDescription):
+        super().__init__()
+        self.game_description = game_description
 
-        self.world_list = world_list
+        self.setWindowTitle("Graph Map")
 
-        fig = Figure(figsize=(7, 5), dpi=65, facecolor=(1, 1, 1), edgecolor=(0, 0, 0))
-        self.canvas = FigureCanvas(fig)
-        self.toolbar = NavigationToolbar(self.canvas, self)
-        lay = QtWidgets.QVBoxLayout(self)
-        lay.addWidget(self.toolbar)
-        lay.addWidget(self.canvas)
+        self.root_widget = QtWidgets.QWidget()
+        self.root_layout = QtWidgets.QVBoxLayout(self.root_widget)
+        self.setWidget(self.root_widget)
 
-        self.ax = fig.add_subplot(111)
-        self.line, *_ = self.ax.plot([])
+        self.graph_map_world_combo = QtWidgets.QComboBox(self)
+        self.graph_map_world_combo.setObjectName(u"graph_map_world_combo")
+        self.root_layout.addWidget(self.graph_map_world_combo)
 
-        self._world_to_node_positions = {}
+        self.matplot_widget = MatplotlibWidget(self, self.game_description.world_list)
+        self.root_layout.addWidget(self.matplot_widget)
 
-    def _positions_for_world(self, world: World, state: State):
-        g = networkx.DiGraph()
+        for world in self.game_description.world_list.worlds:
+            self.graph_map_world_combo.addItem(world.name, world)
+        self.graph_map_world_combo.currentIndexChanged.connect(self.on_graph_map_world_combo)
+        pass
 
-        for area in world.areas:
-            g.add_node(area)
+    def reset(self):
+        pass
 
-        for area in world.areas:
-            nearby_areas = set()
-            for node in area.nodes:
-                if isinstance(node, DockNode):
-                    try:
-                        target_node = self.world_list.resolve_dock_node(node, state.patches)
-                        nearby_areas.add(self.world_list.nodes_to_area(target_node))
-                    except IndexError as e:
-                        logging.error(f"For {node.name} in {area.name}, received {e}")
-                        continue
-            for other_area in nearby_areas:
-                g.add_edge(area, other_area)
+    def decode_persisted_state(self, previous_state: dict) -> Any | None:
+        return None
 
-        return networkx.drawing.spring_layout(g)
+    def apply_previous_state(self, previous_state: Any) -> None:
+        pass
 
-    def update_for(self, world: World, state: State, nodes_in_reach: set[Node]):
-        g = networkx.DiGraph()
+    def persist_current_state(self) -> dict:
+        return {}
 
-        for area in world.areas:
-            g.add_node(area)
+    def fill_into_state(self, state: State):
+        pass
 
-        context = state.node_context()
-        for area in world.areas:
-            nearby_areas = set()
-            for node in area.nodes:
-                if node not in nodes_in_reach:
-                    continue
+    def on_graph_map_world_combo(self):
+        self._matplot_widget()
 
-                for other_node, requirement in node.connections_from(context):
-                    if requirement.satisfied(state.resources, state.energy, state.resource_database):
-                        other_area = self.world_list.nodes_to_area(other_node)
-                        if other_area in world.areas:
-                            nearby_areas.add(other_area)
+    def tracker_update(self, tracker_state: TrackerState):
+        self._last_state = tracker_state
+        # TODO: check if shown
+        self._matplot_widget()
 
-            for other_area in nearby_areas:
-                g.add_edge(area, other_area)
-
-        self.ax.clear()
-
-        cf = self.ax.get_figure()
-        cf.set_facecolor("w")
-
-        if world.name not in self._world_to_node_positions:
-            self._world_to_node_positions[world.name] = self._positions_for_world(world, state)
-        pos = self._world_to_node_positions[world.name]
-
-        networkx.draw_networkx_nodes(g, pos, ax=self.ax)
-        networkx.draw_networkx_edges(g, pos, arrows=True, ax=self.ax)
-        networkx.draw_networkx_labels(g, pos, ax=self.ax,
-                                      labels={area: area.name for area in world.areas},
-                                      verticalalignment='top')
-
-        self.ax.set_axis_off()
-
-        plt.draw_if_interactive()
-        self.canvas.draw()
+    def _matplot_widget(self):
+        self.matplot_widget.update_for(
+            self.graph_map_world_combo.currentData(),
+            self._last_state.state,
+            self._last_state.nodes_in_reach,
+        )

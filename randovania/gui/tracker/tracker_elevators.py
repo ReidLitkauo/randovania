@@ -151,10 +151,8 @@ class TrackerElevatorsWidget(TrackerComponent):
             ],
         }
 
-    def fill_into_state(self, state: State) -> State | None:
+    def fill_into_state(self, state: State):
         state.patches = state.patches.assign_elevators(
             (state.world_list.get_teleporter_node(teleporter), combo.currentData())
             for teleporter, combo in self._elevator_id_to_combo.items()
         )
-
-        return state

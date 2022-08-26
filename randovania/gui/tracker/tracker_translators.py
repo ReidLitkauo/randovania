@@ -111,7 +111,7 @@ class TrackerTranslatorsWidget(TrackerComponent):
             },
         }
 
-    def fill_into_state(self, state: State) -> State | None:
+    def fill_into_state(self, state: State):
         for gate, item in self._translator_gate_to_combo.items():
             scan_visor = self.game_description.resource_database.get_item("Scan")
 
@@ -126,4 +126,3 @@ class TrackerTranslatorsWidget(TrackerComponent):
                 ResourceRequirement.simple(scan_visor),
                 translator_req,
             ])
-        return state

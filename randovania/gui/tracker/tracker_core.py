@@ -32,6 +32,7 @@ from randovania.gui.generated.tracker_window_ui import Ui_TrackerWindow
 from randovania.gui.lib import signal_handling
 from randovania.gui.lib.common_qt_lib import set_default_window_icon
 from randovania.gui.lib.scroll_protected import ScrollProtectedSpinBox
+from randovania.gui.tracker.tracker_canvas_map import TrackerCanvasMap
 from randovania.gui.tracker.tracker_component import TrackerComponent
 from randovania.gui.tracker.tracker_elevators import TrackerElevatorsWidget
 from randovania.gui.tracker.tracker_pickup_inventory import TrackerPickupInventory
@@ -41,6 +42,7 @@ from randovania.layout.base.base_configuration import BaseConfiguration
 from randovania.layout.lib.teleporters import TeleporterShuffleMode, TeleporterConfiguration
 from randovania.layout.preset import Preset
 from randovania.layout.versioned_preset import InvalidPreset, VersionedPreset
+from randovania.lib import json_lib
 from randovania.patching.prime import elevators
 from randovania.resolver.logic import Logic
 from randovania.resolver.resolver_reach import ResolverReach
@@ -125,7 +127,6 @@ class TrackerWindow(QtWidgets.QMainWindow, Ui_TrackerWindow):
             pool_patches,
         )
         self.logic = Logic(self.game_description, self.preset.configuration)
-        self.map_canvas.select_game(self.game_description.game)
 
         self._initial_state.resources.add_self_as_requirement_to_resources = True
 
@@ -144,7 +145,7 @@ class TrackerWindow(QtWidgets.QMainWindow, Ui_TrackerWindow):
 
         self.setup_possible_locations_tree()
 
-        for it in [TrackerPickupInventory, TrackerElevatorsWidget, TrackerTranslatorsWidget]:
+        for it in [TrackerPickupInventory, TrackerElevatorsWidget, TrackerTranslatorsWidget, TrackerCanvasMap]:
             component = it.create_for(player_pool, self.game_configuration)
             if component is not None:
                 self.tracker_components.append(component)
@@ -157,16 +158,6 @@ class TrackerWindow(QtWidgets.QMainWindow, Ui_TrackerWindow):
 
         for first, second in zip(self.tracker_components[:-1], self.tracker_components[1:]):
             self.tabifyDockWidget(first, second)
-
-        # Map
-        for world in sorted(self.game_description.world_list.worlds, key=lambda x: x.name):
-            self.map_world_combo.addItem(world.name, userData=world)
-
-        self.on_map_world_combo(0)
-        self.map_world_combo.currentIndexChanged.connect(self.on_map_world_combo)
-        self.map_area_combo.currentIndexChanged.connect(self.on_map_area_combo)
-        self.map_canvas.set_edit_mode(False)
-        self.map_canvas.SelectAreaRequest.connect(self.focus_on_area)
 
         self.persistence_path.mkdir(parents=True, exist_ok=True)
         previous_state = _load_previous_state(self.persistence_path, self.preset.configuration)
@@ -305,19 +296,6 @@ class TrackerWindow(QtWidgets.QMainWindow, Ui_TrackerWindow):
 
     # Map
 
-    def on_map_world_combo(self, _):
-        world: World = self.map_world_combo.currentData()
-        self.map_area_combo.clear()
-        for area in sorted(world.areas, key=lambda x: x.name):
-            self.map_area_combo.addItem(area.name, userData=area)
-
-        self.map_canvas.select_world(world)
-        self.on_map_area_combo(0)
-
-    def on_map_area_combo(self, _):
-        area: Area = self.map_area_combo.currentData()
-        self.map_canvas.select_area(area)
-
     # Graph Map
     def current_nodes_in_reach(self, state: State | None):
         if state is None:
@@ -328,7 +306,7 @@ class TrackerWindow(QtWidgets.QMainWindow, Ui_TrackerWindow):
             nodes_in_reach.add(state.node)
         return nodes_in_reach
 
-    def map_update(self, tracker_state: TrackerState):
+    def text_map_update(self, tracker_state: TrackerState):
         context = tracker_state.state.node_context()
 
         for world in self.game_description.world_list.worlds:
@@ -357,13 +335,6 @@ class TrackerWindow(QtWidgets.QMainWindow, Ui_TrackerWindow):
                     area_is_visible = area_is_visible or is_visible
                 self._area_name_to_item[(world.name, area.name)].setHidden(not area_is_visible)
 
-        self.map_canvas.set_state(tracker_state.state)
-        self.map_canvas.set_visible_nodes({
-            node
-            for node in tracker_state.nodes_in_reach
-            if not self._node_to_item[node].isHidden()
-        })
-
     def update_locations_tree_for_reachable_nodes(self):
         state = self.state_for_current_configuration()
         nodes_in_reach = self.current_nodes_in_reach(state)
@@ -375,25 +346,28 @@ class TrackerWindow(QtWidgets.QMainWindow, Ui_TrackerWindow):
         for component in self.tracker_components:
             component.tracker_update(tracker_state)
 
-        self.map_update(tracker_state)
+        self.text_map_update(tracker_state)
 
         # Persist the current state
         self.persist_current_state()
 
     def persist_current_state(self):
         world_list = self.game_description.world_list
-        with self.persistence_path.joinpath("state.json").open("w") as state_file:
-            json.dump(
-                {
-                    "actions": [
-                        node.identifier.as_string
-                        for node in self._actions
-                    ],
-                    "starting_location": world_list.identifier_for_node(self._initial_state.node
-                                                                        ).area_identifier.as_json,
-                },
-                state_file
-            )
+
+        new_state = {
+            "actions": [
+                node.identifier.as_string
+                for node in self._actions
+            ],
+            "starting_location": world_list.identifier_for_node(self._initial_state.node).area_identifier.as_json,
+        }
+        for component in self.tracker_components:
+            new_state.update(component.persist_current_state())
+
+        json_lib.write_path(
+            self.persistence_path.joinpath("state.json"),
+            new_state,
+        )
 
     def setup_possible_locations_tree(self):
         """
@@ -473,10 +447,10 @@ class TrackerWindow(QtWidgets.QMainWindow, Ui_TrackerWindow):
 
         return state
 
-    # View
     def focus_on_world(self, world: World):
-        signal_handling.set_combo_with_value(self.map_world_combo, world)
-        self.on_map_world_combo(0)
+        for component in self.tracker_components:
+            component.focus_on_world(world)
 
     def focus_on_area(self, area: Area):
-        signal_handling.set_combo_with_value(self.map_area_combo, area)
+        for component in self.tracker_components:
+            component.focus_on_area(area)

@@ -8,3 +8,4 @@ from randovania.resolver.state import State
 class TrackerState:
     state: State
     nodes_in_reach: set[Node]
+    actions: tuple[Node, ...]

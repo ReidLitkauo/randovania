@@ -22,6 +22,7 @@ from randovania.game_description.db.node_identifier import NodeIdentifier
 from randovania.game_description.db.pickup_node import PickupNode
 from randovania.game_description.db.region import Region
 from randovania.game_description.db.region_list import RegionList
+from randovania.game_description.db.remote_activation_node import RemoteActivationNode
 from randovania.game_description.db.teleporter_network_node import TeleporterNetworkNode
 from randovania.game_description.db.teleporter_node import TeleporterNode
 from randovania.game_description.game_description import GameDescription, MinimalLogicData, IndexWithReason
@@ -374,6 +375,12 @@ class RegionReader:
                     is_unlocked=read_requirement(data["is_unlocked"], self.resource_database),
                     network=data["network"],
                     requirement_to_activate=read_requirement(data["requirement_to_activate"], self.resource_database),
+                )
+
+            elif node_type == "remote_activation":
+                return RemoteActivationNode(
+                    **generic_args,
+                    remote_identifier=NodeIdentifier.from_json(data["remote_identifier"]),
                 )
 
             else:

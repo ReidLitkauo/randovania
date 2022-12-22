@@ -109,6 +109,9 @@ class Path:
 
         filtered = RequirementList(result)
         damage = requirement.damage(self.resources, context.database)
+        if damage > 0:
+            # FIXME: damage not supported
+            return None
 
         new_cost = self.cost
         if filtered.has_items_not_in(self.requirement):

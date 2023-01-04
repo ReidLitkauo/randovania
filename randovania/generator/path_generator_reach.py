@@ -26,7 +26,7 @@ from randovania.resolver.state import State
 #   tuple[ safe nodes, reachable nodes ]
 
 
-PATH_GENERATOR_DEBUG = True
+PATH_GENERATOR_DEBUG = False
 _empty_list = RequirementList([])
 
 
@@ -190,6 +190,15 @@ class Path:
             f"; Left: {self.nodes_left}"
             f"\n* {path}\n")
 
+    def is_effective_zero_cost(self):
+        if self.cost == 0:
+            return True
+        elif self.cost > 1:
+            return False
+
+        node = self.nodes[-1]
+        return isinstance(node, EventNode) and 10 in self.timed_events.values()
+
 
 class PathGeneratorReach(GeneratorReach):
     _state: State
@@ -284,9 +293,9 @@ class PathGeneratorReach(GeneratorReach):
                     max(path.cost for path in paths),
                     len(paths),
                 ))
-                # for path in paths:
-                #     # print("; ".join([f"{i}: {path.is_worse_than(p)}" for i, p in enumerate(paths)]))
-                #     path.pretty_print()
+                for path in paths:
+                    # print("; ".join([f"{i}: {path.is_worse_than(p)}" for i, p in enumerate(paths)]))
+                    path.pretty_print()
 
         self._all_paths = existing_paths
         self._safe_nodes = safe_nodes
@@ -321,7 +330,7 @@ class PathGeneratorReach(GeneratorReach):
             return False
 
         return any(
-            path.cost == 0 and resource_check(path)
+            path.is_effective_zero_cost() and resource_check(path)
             for path in self._all_paths.get(node, [])
         )
 
@@ -342,7 +351,7 @@ class PathGeneratorReach(GeneratorReach):
     @property
     def nodes(self) -> Iterator[Node]:
         for node in self.all_nodes:
-            if any(path.cost == 0 for path in self._all_paths.get(node, [])):
+            if any(path.is_effective_zero_cost() for path in self._all_paths.get(node, [])):
                 yield node
 
     @property

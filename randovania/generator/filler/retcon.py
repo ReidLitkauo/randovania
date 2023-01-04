@@ -233,7 +233,7 @@ def retcon_playthrough_filler(rng: Random,
         weighted_actions = weighted_potential_actions(current_player, action_report, all_locations_weighted)
         action = select_weighted_action(rng, weighted_actions)
 
-        path_generator_reach.PATH_GENERATOR_DEBUG = True
+        path_generator_reach.PATH_GENERATOR_DEBUG = False
 
         new_resources, new_pickups = action.split_pickups()
         new_pickups.sort()

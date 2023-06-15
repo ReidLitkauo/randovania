@@ -4,8 +4,8 @@ import json
 from pathlib import Path
 
 import pypresence
+from PySide6 import QtCore
 from PySide6.QtCore import Signal
-from PySide6.QtWidgets import QWidget
 
 import randovania
 from randovania.gui.lib import async_dialog
@@ -16,7 +16,7 @@ from randovania.network_common.error import (InvalidAction, NotAuthorizedForActi
                                              NotLoggedIn, UserNotAuthorized, UnsupportedClient)
 
 
-class QtNetworkClient(QWidget, NetworkClient):
+class QtNetworkClient(QtCore.QObject, NetworkClient):
     Connect = Signal()
     ConnectError = Signal()
     Disconnect = Signal()
@@ -32,10 +32,9 @@ class QtNetworkClient(QWidget, NetworkClient):
     discord: pypresence.AioClient | None = None
 
     def __init__(self, user_data_dir: Path):
-        super().__init__()
-        NetworkClient.__init__(self, user_data_dir.joinpath("network_client"), randovania.get_configuration())
-        from randovania.gui.lib import common_qt_lib
-        common_qt_lib.set_default_window_icon(self)
+        super().__init__(None,
+                         user_data_dir=user_data_dir.joinpath("network_client"),
+                         configuration=randovania.get_configuration())
 
     @NetworkClient.connection_state.setter
     def connection_state(self, value: ConnectionState):

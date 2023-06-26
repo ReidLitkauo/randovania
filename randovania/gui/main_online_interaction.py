@@ -114,7 +114,7 @@ class OnlineInteractions(QtWidgets.QWidget):
         if self._login_window is not None:
             return self._login_window.show()
 
-        self._login_window = LoginPromptDialog(self.network_client)
+        self._login_window = LoginPromptDialog(self.network_client, self.options)
         try:
             await async_dialog.execute_dialog(self._login_window)
         finally:

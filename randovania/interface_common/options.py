@@ -133,6 +133,7 @@ _SERIALIZER_FOR_FIELD = {
     "parent_for_presets": Serializer(serialize_uuid_dict, decode_uuid_dict),
     "connector_builders": Serializer(lambda obj: [it.as_json for it in obj],
                                      lambda obj: [ConnectorBuilderOption.from_json(it) for it in obj]),
+    "share_tracker_with_server": Serializer(identity, bool),
 }
 
 _PER_GAME_SERIALIZERS = {
@@ -194,6 +195,7 @@ class Options:
     _parent_for_presets: dict[uuid.UUID, uuid.UUID] | None = None
     _game_backend: ConnectorBuilderChoice | None = None
     _connector_builders: list[ConnectorBuilderOption] | None = None
+    _share_tracker_with_server: bool | None = None
 
     def __init__(self, data_dir: Path, user_dir: Path | None = None):
         self._data_dir = data_dir
@@ -423,6 +425,14 @@ class Options:
     @connector_builders.setter
     def connector_builders(self, value: list[ConnectorBuilderOption]):
         self._edit_field("connector_builders", value)
+
+    @property
+    def share_tracker_with_server(self) -> bool:
+        return _return_with_default(self._share_tracker_with_server, lambda: False)
+
+    @share_tracker_with_server.setter
+    def share_tracker_with_server(self, value: bool):
+        self._edit_field("share_tracker_with_server", value)
 
     @property
     def displayed_alerts(self) -> set[InfoAlert]:

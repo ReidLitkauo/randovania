@@ -8,7 +8,7 @@ from flask_socketio import ConnectionRefusedError
 
 import randovania
 import randovania.server.multiplayer.world_api
-from randovania.server import user_session, database, client_check, multiplayer
+from randovania.server import user_session, database, client_check, multiplayer, tracker_sharer
 from randovania.server.multiplayer import world_api
 from randovania.server.server_app import ServerApp
 
@@ -50,6 +50,7 @@ def create_app():
 
     sio = ServerApp(app)
     app.sio = sio
+    tracker_sharer.setup_app(sio)
     multiplayer.setup_app(sio)
     user_session.setup_app(sio)
 

@@ -419,7 +419,6 @@ class NetworkClient:
             if handle_invalid_session and isinstance(possible_error, error.InvalidSession):
                 self.logger.info("Received InvalidSession during a %s call", event)
                 await self.logout()
-
             raise possible_error
 
     async def get_multiplayer_session_list(self, ignore_limit: bool) -> list[MultiplayerSessionListEntry]:

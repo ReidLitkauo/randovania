@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>331</width>
-    <height>233</height>
+    <height>253</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -45,6 +45,16 @@
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="share_tracker_with_server">
+     <property name="text">
+      <string>Share your in-game inventory information with the Randovania server</string>
+     </property>
+     <property name="toolTip">
+      <string>This is useful for online races. It allows re-streams to have access to your inventory in real time.</string>
      </property>
     </widget>
    </item>

@@ -6,17 +6,19 @@ from qasync import asyncSlot
 from randovania.gui.generated.login_prompt_dialog_ui import Ui_LoginPromptDialog
 from randovania.gui.lib import common_qt_lib, async_dialog
 from randovania.gui.lib.qt_network_client import QtNetworkClient, handle_network_errors
+from randovania.interface_common.options import Options
 from randovania.network_common.multiplayer_session import User
 from randovania.network_client.network_client import ConnectionState
 
 
 class LoginPromptDialog(QDialog, Ui_LoginPromptDialog):
 
-    def __init__(self, network_client: QtNetworkClient):
+    def __init__(self, network_client: QtNetworkClient, options: Options):
         super().__init__()
         self.setupUi(self)
         common_qt_lib.set_default_window_icon(self)
         self.network_client = network_client
+        self.options = options
 
         login_methods = network_client.available_login_methods
         self.guest_button.setVisible("guest" in login_methods)
@@ -26,6 +28,7 @@ class LoginPromptDialog(QDialog, Ui_LoginPromptDialog):
             if self.discord_button.isEnabled() else
             "This Randovania build is not configured to login with Discord."
         )
+        self.share_tracker_with_server.setChecked(self.options.share_tracker_with_server)
         self.privacy_policy_label.setText(self.privacy_policy_label.text().replace("color:#0000ff;", ""))
 
         self.button_box.button(QtWidgets.QDialogButtonBox.Reset).setText("Logout")
@@ -36,6 +39,7 @@ class LoginPromptDialog(QDialog, Ui_LoginPromptDialog):
 
         self.guest_button.clicked.connect(self.on_login_as_guest_button)
         self.discord_button.clicked.connect(self.on_login_with_discord_button)
+        self.share_tracker_with_server.clicked.connect(self.on_share_tracker_with_server)
         self.button_box.button(QtWidgets.QDialogButtonBox.Ok).clicked.connect(self.on_ok_button)
         self.button_box.button(QtWidgets.QDialogButtonBox.Reset).clicked.connect(self.on_logout_button)
 
@@ -84,6 +88,10 @@ class LoginPromptDialog(QDialog, Ui_LoginPromptDialog):
         except pypresence.exceptions.ServerError:
             await async_dialog.warning(self, "Discord login",
                                        "Login failed. Did you reject the authorization prompt in Discord?")
+
+    def on_share_tracker_with_server(self, value: bool):
+        with self.options as options:
+            options.share_tracker_with_server = value
 
     def on_ok_button(self):
         self.accept()

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>424</width>
-    <height>260</height>
+    <width>421</width>
+    <height>349</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -45,11 +45,24 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>404</width>
-        <height>178</height>
+        <width>401</width>
+        <height>299</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
        <item>
         <widget class="QGroupBox" name="game_changes_box">
          <property name="title">
@@ -91,21 +104,59 @@
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QCheckBox" name="enable_auto_tracker">
+            <property name="text">
+             <string>Enable automatic item tracker</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="show_room_names">
+            <item>
+             <widget class="QLabel" name="room_names_label">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Show Room Names On HUD</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="room_names_dropdown">
+              <property name="editable">
+               <bool>false</bool>
+              </property>
+              <property name="currentText">
+               <string/>
+              </property>
+              <property name="placeholderText">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="missile_cosmetic" stretch="0,0">
+            <item>
+             <widget class="QLabel" name="missile_cosmetic_label">
+              <property name="text">
+               <string>Missile Pack Recolor</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="missile_cosmetic_dropdown"/>
+            </item>
+           </layout>
+          </item>
          </layout>
         </widget>
-       </item>
-       <item>
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
        </item>
       </layout>
      </widget>

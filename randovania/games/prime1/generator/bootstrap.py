@@ -7,7 +7,6 @@ from randovania.game_description.resources.resource_database import ResourceData
 from randovania.game_description.resources.resource_info import ResourceCollection
 from randovania.game_description.resources.resource_type import ResourceType
 from randovania.layout.base.base_configuration import BaseConfiguration
-from randovania.layout.base.dock_rando_configuration import DockRandoMode
 from randovania.resolver.bootstrap import MetroidBootstrap
 
 
@@ -37,7 +36,7 @@ class PrimeBootstrap(MetroidBootstrap):
             if getattr(configuration, name):
                 enabled_resources.add(index)
         
-        if configuration.dock_rando.mode != DockRandoMode.VANILLA:
+        if configuration.dock_rando.is_enabled():
             enabled_resources.add("dock_rando")
 
         return enabled_resources
@@ -70,7 +69,7 @@ class PrimeBootstrap(MetroidBootstrap):
         requirement_template = copy.copy(db.requirement_template)
 
         suits = [db.get_item_by_name("Varia Suit")]
-        if configuration.heat_protection_only_varia:
+        if not configuration.legacy_mode:
             requirement_template["Heat-Resisting Suit"] = ResourceRequirement.simple(db.get_item_by_name("Varia Suit"))
         else:
             suits.extend([db.get_item_by_name("Gravity Suit"), db.get_item_by_name("Phazon Suit")])

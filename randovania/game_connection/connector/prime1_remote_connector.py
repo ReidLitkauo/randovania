@@ -1,15 +1,16 @@
 import struct
 
-from randovania.dol_patching import assembler
-from randovania.game_connection.connection_base import Inventory
+from ppc_asm import assembler
+
+from open_prime_rando.dol_patching import all_prime_dol_patches
+from open_prime_rando.dol_patching.prime1 import dol_patches
+from open_prime_rando.dol_patching.prime1.dol_patches import Prime1DolVersion
 from randovania.game_connection.connector.prime_remote_connector import PrimeRemoteConnector
 from randovania.game_connection.executor.memory_operation import MemoryOperation, MemoryOperationExecutor
-from randovania.game_description.resources.item_resource_info import ItemResourceInfo
+from randovania.game_description.db.region import Region
+from randovania.game_description.resources.item_resource_info import ItemResourceInfo, Inventory
 from randovania.game_description.resources.pickup_entry import PickupEntry
-from randovania.game_description.world.world import World
-from randovania.games.prime1.patcher import prime_items, prime1_dol_patches
-from randovania.games.prime1.patcher.prime1_dol_patches import Prime1DolVersion
-from randovania.patching.prime import (all_prime_dol_patches)
+from randovania.games.prime1.patcher import prime_items
 
 
 def format_received_item(item_name: str, player_name: str) -> str:
@@ -35,16 +36,19 @@ def _prime1_powerup_offset(item_index: int) -> int:
 class Prime1RemoteConnector(PrimeRemoteConnector):
     version: Prime1DolVersion
 
-    def __init__(self, version: Prime1DolVersion):
-        super().__init__(version)
+    def __init__(self, version: Prime1DolVersion, executor: MemoryOperationExecutor):
+        super().__init__(version, executor)
 
     def _asset_id_format(self):
         return ">I"
 
-    async def current_game_status(self, executor: MemoryOperationExecutor) -> tuple[bool, World | None]:
+    @property
+    def multiworld_magic_item(self) -> ItemResourceInfo:
+        return self.game.resource_database.get_item(prime_items.MULTIWORLD_ITEM)
+
+    async def current_game_status(self) -> tuple[bool, Region | None]:
         """
-        Fetches the world the player's currently at, or None if they're not in-game.
-        :param executor:
+        Fetches the region the player's currently at, or None if they're not in-game.
         :return: bool indicating if there's a pending `execute_remote_patches` operation.
         """
 
@@ -59,7 +63,7 @@ class Prime1RemoteConnector(PrimeRemoteConnector):
             MemoryOperation(cstate_manager_global + 0x2, read_byte_count=1),
             MemoryOperation(cstate_manager_global + cplayer_offset, offset=0, read_byte_count=4),
         ]
-        results = await executor.perform_memory_operations(memory_ops)
+        results = await self.executor.perform_memory_operations(memory_ops)
 
         pending_op_byte = results[memory_ops[1]]
 
@@ -67,9 +71,9 @@ class Prime1RemoteConnector(PrimeRemoteConnector):
         return has_pending_op, self._current_status_world(results.get(memory_ops[0]),
                                                           results.get(memory_ops[2]))
 
-    async def _memory_op_for_items(self, executor: MemoryOperationExecutor, items: list[ItemResourceInfo],
+    async def _memory_op_for_items(self, items: list[ItemResourceInfo],
                                    ) -> list[MemoryOperation]:
-        player_state_pointer = int.from_bytes(await executor.perform_single_memory_operation(MemoryOperation(
+        player_state_pointer = int.from_bytes(await self.executor.perform_single_memory_operation(MemoryOperation(
             address=self.version.cstate_manager_global + 0x8b8,
             read_byte_count=4,
         )), "big")
@@ -96,7 +100,7 @@ class Prime1RemoteConnector(PrimeRemoteConnector):
 
             if item.short_name not in prime_items.ARTIFACT_ITEMS:
                 patches.append(all_prime_dol_patches.adjust_item_amount_and_capacity_patch(
-                    self.version.powerup_functions, self.game.game, item.extra["item_id"], delta,
+                    self.version.powerup_functions, self.version.game, item.extra["item_id"], delta,
                 ))
             else:
                 if item.extra["item_id"] > 29:
@@ -105,9 +109,9 @@ class Prime1RemoteConnector(PrimeRemoteConnector):
                     layer_id = 23  # Truth layer
 
                 patches.append(all_prime_dol_patches.increment_item_capacity_patch(
-                    self.version.powerup_functions, self.game.game, item.extra["item_id"], delta
+                    self.version.powerup_functions, self.version.game, item.extra["item_id"], delta
                 ))
-                patches.append(prime1_dol_patches.set_artifact_layer_active_patch(
+                patches.append(dol_patches.set_artifact_layer_active_patch(
                     self.version, layer_id, delta > 0
                 ))
 

@@ -6,9 +6,11 @@ from PySide6.QtGui import QColor
 from PySide6.QtWidgets import QColorDialog, QFrame, QLayout, QSizePolicy, QWidget, QCheckBox, QSlider, QLabel
 
 from randovania.games.prime2.layout.echoes_cosmetic_patches import EchoesCosmeticPatches
-from randovania.games.prime2.layout.echoes_user_preferences import EchoesUserPreferences, SoundMode
+from open_prime_rando.dol_patching.echoes.user_preferences import SoundMode
+from randovania.games.prime2.layout.echoes_user_preferences import EchoesUserPreferences
 from randovania.gui.dialog.base_cosmetic_patches_dialog import BaseCosmeticPatchesDialog
 from randovania.gui.generated.echoes_cosmetic_patches_dialog_ui import Ui_EchoesCosmeticPatchesDialog
+from randovania.gui.lib.signal_handling import set_combo_with_value
 
 
 def update_label_with_slider(label: QLabel, slider: QSlider):
@@ -60,7 +62,6 @@ class EchoesCosmeticPatchesDialog(BaseCosmeticPatchesDialog, Ui_EchoesCosmeticPa
         self.open_map_check.stateChanged.connect(self._persist_option_then_notify("open_map"))
         self.unvisited_room_names_check.stateChanged.connect(self._persist_option_then_notify("unvisited_room_names"))
         self.pickup_markers_check.stateChanged.connect(self._persist_option_then_notify("pickup_markers"))
-        self.elevator_sound_check.stateChanged.connect(self._persist_option_then_notify("teleporter_sounds"))
         self.sound_mode_combo.currentIndexChanged.connect(self._on_sound_mode_update)
         self.custom_hud_color.stateChanged.connect(self._persist_option_then_notify("use_hud_color"))
         self.custom_hud_color_button.clicked.connect(self._open_color_picker)
@@ -77,12 +78,11 @@ class EchoesCosmeticPatchesDialog(BaseCosmeticPatchesDialog, Ui_EchoesCosmeticPa
         self.open_map_check.setChecked(patches.open_map)
         self.unvisited_room_names_check.setChecked(patches.unvisited_room_names)
         self.pickup_markers_check.setChecked(patches.pickup_markers)
-        self.elevator_sound_check.setChecked(patches.teleporter_sounds)
         self.on_new_user_preferences(patches.user_preferences)
         self.custom_hud_color.setChecked(patches.use_hud_color)
 
     def on_new_user_preferences(self, user_preferences: EchoesUserPreferences):
-        self.sound_mode_combo.setCurrentIndex(self.sound_mode_combo.findData(user_preferences.sound_mode))
+        set_combo_with_value(self.sound_mode_combo, user_preferences.sound_mode)
 
         for field in dataclasses.fields(user_preferences):
             if field.name in self.field_to_slider_mapping:

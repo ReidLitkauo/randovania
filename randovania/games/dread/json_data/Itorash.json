@@ -62,15 +62,17 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Itorash",
-                        "area_name": "Transport to Hanubia",
-                        "node_name": "Door to Save Station"
+                        "region": "Itorash",
+                        "area": "Transport to Hanubia",
+                        "node": "Door to Save Station"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": true,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
-                        "Door to Elevator to Raven Beak": {
+                        "Save Station": {
                             "type": "and",
                             "data": {
                                 "comment": null,
@@ -102,15 +104,17 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Itorash",
-                        "area_name": "Elevator to Raven Beak",
-                        "node_name": "Door to Save Station"
+                        "region": "Itorash",
+                        "area": "Elevator to Raven Beak",
+                        "node": "Door to Save Station"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": true,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
-                        "Door to Transport to Hanubia": {
+                        "Save Station": {
                             "type": "and",
                             "data": {
                                 "comment": null,
@@ -138,7 +142,22 @@
                         "start_point_actor_def": "actordef:actors/props/weightactivatedplatform_save/charclasses/weightactivatedplatform_save.bmsad"
                     },
                     "valid_starting_location": false,
-                    "connections": {}
+                    "connections": {
+                        "Door to Transport to Hanubia": {
+                            "type": "and",
+                            "data": {
+                                "comment": null,
+                                "items": []
+                            }
+                        },
+                        "Door to Elevator to Raven Beak": {
+                            "type": "and",
+                            "data": {
+                                "comment": null,
+                                "items": []
+                            }
+                        }
+                    }
                 }
             }
         },
@@ -195,11 +214,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Itorash",
-                        "area_name": "Save Station",
-                        "node_name": "Door to Transport to Hanubia"
+                        "region": "Itorash",
+                        "area": "Save Station",
+                        "node": "Door to Transport to Hanubia"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": true,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -476,8 +497,8 @@
                     },
                     "valid_starting_location": true,
                     "destination": {
-                        "world_name": "Hanubia",
-                        "area_name": "Transport to Itorash"
+                        "region": "Hanubia",
+                        "area": "Transport to Itorash"
                     },
                     "keep_name_when_vanilla": true,
                     "editable": true,
@@ -654,11 +675,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Itorash",
-                        "area_name": "Save Station",
-                        "node_name": "Door to Elevator to Raven Beak"
+                        "region": "Itorash",
+                        "area": "Save Station",
+                        "node": "Door to Elevator to Raven Beak"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": true,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -842,8 +865,8 @@
                     },
                     "valid_starting_location": false,
                     "destination": {
-                        "world_name": "Itorash",
-                        "area_name": "Raven Beak Arena"
+                        "region": "Itorash",
+                        "area": "Raven Beak Arena"
                     },
                     "keep_name_when_vanilla": false,
                     "editable": false,
@@ -1319,8 +1342,8 @@
                     "extra": {},
                     "valid_starting_location": false,
                     "destination": {
-                        "world_name": "Hanubia",
-                        "area_name": "Raven Beak X Arena"
+                        "region": "Hanubia",
+                        "area": "Raven Beak X Arena"
                     },
                     "keep_name_when_vanilla": false,
                     "editable": false,

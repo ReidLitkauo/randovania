@@ -43,7 +43,7 @@ Extra - asset_id: collision_camera_001
   > Door to Save Station
       Trivial
 
-> Tram to Ghavoran - Transport to Elun; Heals? False; Spawn Point; Default Node
+> Tram to Ghavoran - Transport to Elun; Heals? False; Default Node
   * Layers: default
   * Teleporter to Ghavoran - Transport to Elun
   * Extra - actor_name: wagontrain_forest_000
@@ -196,7 +196,7 @@ Extra - asset_id: collision_camera_003
   > Door to Plasma Beam Room (Upper)
       Trivial
 
-> Start Point; Heals? False; Spawn Point; Default Node
+> Start Point; Heals? False; Default Node
   * Layers: default
   * Extra - start_point_actor_name: SP_Checkpoint_PlasmaBeam
   * Extra - start_point_actor_def: actordef:actors/logic/startpoint/charclasses/startpoint.bmsad
@@ -260,20 +260,19 @@ Extra - asset_id: collision_camera_004
 
 > Door to Spider Magnet Room; Heals? False
   * Layers: default
-  * Power Beam Door to Spider Magnet Room/Door to Chozo Soldier Arena
+  * Power Beam Door to Spider Magnet Room/Door to Chozo Soldier Arena; Excluded from Dock Lock Rando
   * Extra - actor_name: doorpowerpower_005
   * Extra - actor_def: actordef:actors/props/doorpowerpower/charclasses/doorpowerpower.bmsad
   * Extra - left_shield_entity: {EMPTY}
   * Extra - left_shield_def: None
   * Extra - right_shield_entity: {EMPTY}
   * Extra - right_shield_def: None
-  * Extra - exclude_from_dock_rando: True
   > Door to Ammo Recharge Station
       After Elun - Chozo Soldier Fight
   > Event - Chozo Soldier Fight
       Fight Chozo-X
 
-> Start Point; Heals? False; Spawn Point; Default Node
+> Start Point; Heals? False; Default Node
   * Layers: default
   * Extra - start_point_actor_name: SP_Checkpoint_Dead_ChozoWarriorX
   * Extra - start_point_actor_def: actordef:actors/logic/startpoint/charclasses/startpoint.bmsad
@@ -376,7 +375,7 @@ Extra - asset_id: collision_camera_006
   > Door to Ammo Recharge Station
       Trivial
 
-> Start Point; Heals? False; Spawn Point; Default Node
+> Start Point; Heals? False; Default Node
   * Layers: default
   * Extra - start_point_actor_name: SP_PlasmaBeam
   * Extra - start_point_actor_def: actordef:actors/logic/startpoint/charclasses/startpoint.bmsad
@@ -390,14 +389,13 @@ Extra - polygon: [[7700.0, 2900.0], [5600.0, 2900.0], [5600.0, 400.0], [7700.0, 
 Extra - asset_id: collision_camera_007
 > Door to Chozo Soldier Arena; Heals? False
   * Layers: default
-  * Power Beam Door to Chozo Soldier Arena/Door to Spider Magnet Room
+  * Power Beam Door to Chozo Soldier Arena/Door to Spider Magnet Room; Excluded from Dock Lock Rando
   * Extra - actor_name: doorpowerpower_005
   * Extra - actor_def: actordef:actors/props/doorpowerpower/charclasses/doorpowerpower.bmsad
   * Extra - left_shield_entity: {EMPTY}
   * Extra - left_shield_def: None
   * Extra - right_shield_entity: {EMPTY}
   * Extra - right_shield_def: None
-  * Extra - exclude_from_dock_rando: True
   > Door to Gyroscope Room
       Morph Ball
 
@@ -417,7 +415,7 @@ Extra - asset_id: collision_camera_007
           After Elun - Vertical Bomb Maze Grapple Block
           Lay Bomb or Lay Power Bomb
 
-> Start Point; Heals? False; Spawn Point; Default Node
+> Start Point; Heals? False; Default Node
   * Layers: default
   * Extra - start_point_actor_name: SP_Checkpoint_ChozoWarriorX
   * Extra - start_point_actor_def: actordef:actors/logic/startpoint/charclasses/startpoint.bmsad

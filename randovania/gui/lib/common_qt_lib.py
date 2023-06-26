@@ -173,16 +173,6 @@ def set_default_window_icon(window: QtWidgets.QWidget):
     window.setWindowIcon(QtGui.QIcon(os.fspath(randovania.get_icon_path())))
 
 
-def set_combo_with_value(combo: QtWidgets.QComboBox, value):
-    """
-    Searches all items of the given combo for the given value and changes the current index to that one.
-    :param combo:
-    :param value:
-    :return:
-    """
-    combo.setCurrentIndex(combo.findData(value))
-
-
 def set_error_border_stylesheet(edit: QtWidgets.QWidget, has_error: bool):
     edit.has_error = has_error
     if has_error:
@@ -203,6 +193,9 @@ def set_edit_if_different(edit: QtWidgets.QLineEdit, new_text: str):
     if edit.text() != new_text:
         edit.setText(new_text)
 
+def set_edit_if_different_text(edit: QtWidgets.QTextEdit, new_text: str):
+    if edit.toPlainText() != new_text:
+        edit.setPlainText(new_text)
 
 def get_network_client():
     from randovania.gui.lib.qt_network_client import QtNetworkClient

@@ -10,7 +10,7 @@
     },
     "areas": {
         "Map Station": {
-            "default_node": "Map Station",
+            "default_node": "Save Station",
             "extra": {
                 "total_boundings": {
                     "x1": -5000.0,
@@ -62,11 +62,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Upper Burenia Hub",
-                        "node_name": "Door to Map Station"
+                        "region": "Burenia",
+                        "area": "Upper Burenia Hub",
+                        "node": "Door to Map Station"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -102,11 +104,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Teleport to Ferenia",
-                        "node_name": "Door to Map Station"
+                        "region": "Burenia",
+                        "area": "Teleport to Ferenia",
+                        "node": "Door to Map Station"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -117,7 +121,7 @@
                                 "items": []
                             }
                         },
-                        "Map Station": {
+                        "Save Station": {
                             "type": "and",
                             "data": {
                                 "comment": null,
@@ -126,7 +130,7 @@
                         }
                     }
                 },
-                "Map Station": {
+                "Save Station": {
                     "node_type": "generic",
                     "heal": false,
                     "coordinates": {
@@ -144,7 +148,7 @@
                         "start_point_actor_name": "maproom_platform",
                         "start_point_actor_def": "actordef:actors/props/weightactivatedplatform_map/charclasses/weightactivatedplatform_map.bmsad"
                     },
-                    "valid_starting_location": false,
+                    "valid_starting_location": true,
                     "connections": {
                         "Door to Teleport to Ferenia": {
                             "type": "and",
@@ -210,11 +214,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Burenia Hub to Dairon",
-                        "node_name": "Door to Upper Burenia Hub"
+                        "region": "Burenia",
+                        "area": "Burenia Hub to Dairon",
+                        "node": "Door to Upper Burenia Hub"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -252,11 +258,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Navigation Station North",
-                        "node_name": "Door to Upper Burenia Hub"
+                        "region": "Burenia",
+                        "area": "Navigation Station North",
+                        "node": "Door to Upper Burenia Hub"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -344,11 +352,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Map Station",
-                        "node_name": "Door to Upper Burenia Hub"
+                        "region": "Burenia",
+                        "area": "Map Station",
+                        "node": "Door to Upper Burenia Hub"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -422,7 +432,7 @@
                         "start_point_actor_name": "SP_Checkpoint_DoorProfessor",
                         "start_point_actor_def": "actordef:actors/logic/startpoint/charclasses/startpoint.bmsad"
                     },
-                    "valid_starting_location": true,
+                    "valid_starting_location": false,
                     "connections": {
                         "Door to Burenia Hub to Dairon": {
                             "type": "template",
@@ -453,11 +463,13 @@
                     "valid_starting_location": false,
                     "dock_type": "tunnel",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Transport to Ghavoran",
-                        "node_name": "Tunnel to Upper Burenia Hub"
+                        "region": "Burenia",
+                        "area": "Transport to Ghavoran",
+                        "node": "Tunnel to Upper Burenia Hub"
                     },
                     "default_dock_weakness": "Morph Ball Tunnel",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -568,11 +580,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Upper Transport to Dairon",
-                        "node_name": "Door to Burenia Hub to Dairon"
+                        "region": "Burenia",
+                        "area": "Upper Transport to Dairon",
+                        "node": "Door to Burenia Hub to Dairon"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -605,11 +619,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Upper Burenia Hub",
-                        "node_name": "Door to Burenia Hub to Dairon"
+                        "region": "Burenia",
+                        "area": "Upper Burenia Hub",
+                        "node": "Door to Burenia Hub to Dairon"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -711,11 +727,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Underwater Horseshoe",
-                        "node_name": "Door to Burenia Hub to Dairon"
+                        "region": "Burenia",
+                        "area": "Underwater Horseshoe",
+                        "node": "Door to Burenia Hub to Dairon"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -843,11 +861,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Lower Transport to Dairon",
-                        "node_name": "Door to Burenia Hub to Dairon"
+                        "region": "Burenia",
+                        "area": "Lower Transport to Dairon",
+                        "node": "Door to Burenia Hub to Dairon"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -2026,7 +2046,7 @@
                     ],
                     "extra": {},
                     "valid_starting_location": false,
-                    "event_name": "s040_aqua:default:db_reg_aq_001",
+                    "event_name": "s040_aqua:default:db_reg_aq_007",
                     "connections": {
                         "Water Bottom": {
                             "type": "and",
@@ -2117,11 +2137,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Burenia Hub to Dairon",
-                        "node_name": "Door to Upper Transport to Dairon"
+                        "region": "Burenia",
+                        "area": "Burenia Hub to Dairon",
+                        "node": "Door to Upper Transport to Dairon"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -2154,10 +2176,10 @@
                         "start_point_actor_name": "wagontrain_baselab_000_platform",
                         "start_point_actor_def": "actordef:actors/props/weightactivatedplatform_train/charclasses/weightactivatedplatform_train.bmsad"
                     },
-                    "valid_starting_location": true,
+                    "valid_starting_location": false,
                     "destination": {
-                        "world_name": "Dairon",
-                        "area_name": "Upper Transport to Burenia"
+                        "region": "Dairon",
+                        "area": "Upper Transport to Burenia"
                     },
                     "keep_name_when_vanilla": true,
                     "editable": true,
@@ -2226,11 +2248,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Burenia Hub to Dairon",
-                        "node_name": "Door to Lower Transport to Dairon"
+                        "region": "Burenia",
+                        "area": "Burenia Hub to Dairon",
+                        "node": "Door to Lower Transport to Dairon"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -2265,8 +2289,8 @@
                     },
                     "valid_starting_location": false,
                     "destination": {
-                        "world_name": "Dairon",
-                        "area_name": "Lower Transport to Burenia"
+                        "region": "Dairon",
+                        "area": "Lower Transport to Burenia"
                     },
                     "keep_name_when_vanilla": true,
                     "editable": true,
@@ -2330,17 +2354,18 @@
                         "left_shield_entity": "{EMPTY}",
                         "left_shield_def": null,
                         "right_shield_entity": "{EMPTY}",
-                        "right_shield_def": null,
-                        "exclude_from_dock_rando": true
+                        "right_shield_def": null
                     },
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Drogyga Access",
-                        "node_name": "Door to Drogyga Eyedoor"
+                        "region": "Burenia",
+                        "area": "Drogyga Access",
+                        "node": "Door to Drogyga Eyedoor"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": true,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -2376,11 +2401,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Teleport to Ferenia",
-                        "node_name": "Door to Drogyga Eyedoor"
+                        "region": "Burenia",
+                        "area": "Teleport to Ferenia",
+                        "node": "Door to Drogyga Eyedoor"
                     },
                     "default_dock_weakness": "Grapple Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -2409,7 +2436,7 @@
                         "start_point_actor_name": "SP_Checkpoint_Hydrogiga",
                         "start_point_actor_def": "actordef:actors/logic/startpoint/charclasses/startpoint.bmsad"
                     },
-                    "valid_starting_location": true,
+                    "valid_starting_location": false,
                     "connections": {
                         "Door to Drogyga Access": {
                             "type": "and",
@@ -2436,11 +2463,13 @@
                     "valid_starting_location": false,
                     "dock_type": "tunnel",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Underneath Drogyga",
-                        "node_name": "Tunnel to Drogyga Eyedoor (Upper)"
+                        "region": "Burenia",
+                        "area": "Underneath Drogyga",
+                        "node": "Tunnel to Drogyga Eyedoor (Upper)"
                     },
                     "default_dock_weakness": "Slide Tunnel",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -2469,11 +2498,13 @@
                     "valid_starting_location": false,
                     "dock_type": "tunnel",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Underneath Drogyga",
-                        "node_name": "Tunnel to Drogyga Eyedoor (Lower)"
+                        "region": "Burenia",
+                        "area": "Underneath Drogyga",
+                        "node": "Tunnel to Drogyga Eyedoor (Lower)"
                     },
                     "default_dock_weakness": "Morph Ball Tunnel",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -2688,11 +2719,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Underneath Drogyga",
-                        "node_name": "Door to Transport to Ghavoran"
+                        "region": "Burenia",
+                        "area": "Underneath Drogyga",
+                        "node": "Door to Transport to Ghavoran"
                     },
                     "default_dock_weakness": "Grapple Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -2758,17 +2791,18 @@
                         "left_shield_entity": "{EMPTY}",
                         "left_shield_def": null,
                         "right_shield_entity": "{EMPTY}",
-                        "right_shield_def": null,
-                        "exclude_from_dock_rando": true
+                        "right_shield_def": null
                     },
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Save Station North",
-                        "node_name": "Door to Transport to Ghavoran"
+                        "region": "Burenia",
+                        "area": "Save Station North",
+                        "node": "Door to Transport to Ghavoran"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": true,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -2912,8 +2946,8 @@
                     },
                     "valid_starting_location": false,
                     "destination": {
-                        "world_name": "Ghavoran",
-                        "area_name": "Transport to Burenia"
+                        "region": "Ghavoran",
+                        "area": "Transport to Burenia"
                     },
                     "keep_name_when_vanilla": true,
                     "editable": true,
@@ -3046,11 +3080,13 @@
                     "valid_starting_location": false,
                     "dock_type": "tunnel",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Underneath Drogyga",
-                        "node_name": "Tunnel to Transport to Ghavoran (Upper)"
+                        "region": "Burenia",
+                        "area": "Underneath Drogyga",
+                        "node": "Tunnel to Transport to Ghavoran (Upper)"
                     },
                     "default_dock_weakness": "Morph Ball Tunnel",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -3323,11 +3359,13 @@
                     "valid_starting_location": false,
                     "dock_type": "tunnel",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Underneath Drogyga",
-                        "node_name": "Tunnel to Transport to Ghavoran (Lower)"
+                        "region": "Burenia",
+                        "area": "Underneath Drogyga",
+                        "node": "Tunnel to Transport to Ghavoran (Lower)"
                     },
                     "default_dock_weakness": "Slide Tunnel",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -3363,11 +3401,13 @@
                     "valid_starting_location": false,
                     "dock_type": "tunnel",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Upper Burenia Hub",
-                        "node_name": "Tunnel to Transport to Ghavoran"
+                        "region": "Burenia",
+                        "area": "Upper Burenia Hub",
+                        "node": "Tunnel to Transport to Ghavoran"
                     },
                     "default_dock_weakness": "Morph Ball Tunnel",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -3479,11 +3519,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Transport to Ghavoran",
-                        "node_name": "Door to Underneath Drogyga"
+                        "region": "Burenia",
+                        "area": "Transport to Ghavoran",
+                        "node": "Door to Underneath Drogyga"
                     },
                     "default_dock_weakness": "Grapple Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -3581,11 +3623,13 @@
                     "valid_starting_location": false,
                     "dock_type": "other",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Drogyga Arena",
-                        "node_name": "Dock to Underneath Drogyga"
+                        "region": "Burenia",
+                        "area": "Drogyga Arena",
+                        "node": "Dock to Underneath Drogyga"
                     },
                     "default_dock_weakness": "Open Passage",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -3713,11 +3757,13 @@
                     "valid_starting_location": false,
                     "dock_type": "tunnel",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Transport to Ghavoran",
-                        "node_name": "Tunnel to Underneath Drogyga (Upper)"
+                        "region": "Burenia",
+                        "area": "Transport to Ghavoran",
+                        "node": "Tunnel to Underneath Drogyga (Upper)"
                     },
                     "default_dock_weakness": "Morph Ball Tunnel",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -3781,11 +3827,13 @@
                     "valid_starting_location": false,
                     "dock_type": "tunnel",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Drogyga Eyedoor",
-                        "node_name": "Tunnel to Underneath Drogyga (Upper)"
+                        "region": "Burenia",
+                        "area": "Drogyga Eyedoor",
+                        "node": "Tunnel to Underneath Drogyga (Upper)"
                     },
                     "default_dock_weakness": "Slide Tunnel",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -3811,11 +3859,13 @@
                     "valid_starting_location": false,
                     "dock_type": "tunnel",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Drogyga Eyedoor",
-                        "node_name": "Tunnel to Underneath Drogyga (Lower)"
+                        "region": "Burenia",
+                        "area": "Drogyga Eyedoor",
+                        "node": "Tunnel to Underneath Drogyga (Lower)"
                     },
                     "default_dock_weakness": "Morph Ball Tunnel",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -3844,11 +3894,13 @@
                     "valid_starting_location": false,
                     "dock_type": "tunnel",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Transport to Ghavoran",
-                        "node_name": "Tunnel to Underneath Drogyga (Lower)"
+                        "region": "Burenia",
+                        "area": "Transport to Ghavoran",
+                        "node": "Tunnel to Underneath Drogyga (Lower)"
                     },
                     "default_dock_weakness": "Slide Tunnel",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -4146,11 +4198,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Navigation Station North",
-                        "node_name": "Door to Teleport to Ferenia"
+                        "region": "Burenia",
+                        "area": "Navigation Station North",
+                        "node": "Door to Teleport to Ferenia"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -4190,17 +4244,18 @@
                         "left_shield_entity": "{EMPTY}",
                         "left_shield_def": null,
                         "right_shield_entity": "{EMPTY}",
-                        "right_shield_def": null,
-                        "exclude_from_dock_rando": true
+                        "right_shield_def": null
                     },
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Main Hub Tower Top",
-                        "node_name": "Door to Teleport to Ferenia"
+                        "region": "Burenia",
+                        "area": "Main Hub Tower Top",
+                        "node": "Door to Teleport to Ferenia"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": true,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -4236,11 +4291,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Map Station",
-                        "node_name": "Door to Teleport to Ferenia"
+                        "region": "Burenia",
+                        "area": "Map Station",
+                        "node": "Door to Teleport to Ferenia"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -4311,11 +4368,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Drogyga Eyedoor",
-                        "node_name": "Door to Teleport to Ferenia"
+                        "region": "Burenia",
+                        "area": "Drogyga Eyedoor",
+                        "node": "Door to Teleport to Ferenia"
                     },
                     "default_dock_weakness": "Grapple Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -4666,10 +4725,10 @@
                         "start_point_actor_name": "LE_Platform_Teleport_Secret",
                         "start_point_actor_def": "actordef:actors/props/weightactivatedplatform_teleport/charclasses/weightactivatedplatform_teleport.bmsad"
                     },
-                    "valid_starting_location": true,
+                    "valid_starting_location": false,
                     "destination": {
-                        "world_name": "Ferenia",
-                        "area_name": "Teleport to Burenia (Cyan)"
+                        "region": "Ferenia",
+                        "area": "Teleport to Burenia (Cyan)"
                     },
                     "keep_name_when_vanilla": true,
                     "editable": true,
@@ -5006,7 +5065,7 @@
             }
         },
         "Navigation Station North": {
-            "default_node": "Navigation Room",
+            "default_node": "Save Station",
             "extra": {
                 "total_boundings": {
                     "x1": -5000.0,
@@ -5058,11 +5117,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Upper Burenia Hub",
-                        "node_name": "Door to Navigation Station North"
+                        "region": "Burenia",
+                        "area": "Upper Burenia Hub",
+                        "node": "Door to Navigation Station North"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -5098,11 +5159,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Teleport to Ferenia",
-                        "node_name": "Door to Navigation Station North"
+                        "region": "Burenia",
+                        "area": "Teleport to Ferenia",
+                        "node": "Door to Navigation Station North"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -5113,7 +5176,7 @@
                                 "items": []
                             }
                         },
-                        "Navigation Room": {
+                        "Save Station": {
                             "type": "and",
                             "data": {
                                 "comment": null,
@@ -5122,7 +5185,7 @@
                         }
                     }
                 },
-                "Navigation Room": {
+                "Save Station": {
                     "node_type": "hint",
                     "heal": false,
                     "coordinates": {
@@ -5142,7 +5205,7 @@
                         "hint_id": "AQUA_1",
                         "string_asset_id": 7
                     },
-                    "valid_starting_location": false,
+                    "valid_starting_location": true,
                     "kind": "generic",
                     "requirement_to_collect": {
                         "type": "and",
@@ -5209,11 +5272,13 @@
                     "valid_starting_location": false,
                     "dock_type": "other",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Main Hub Tower Middle",
-                        "node_name": "Dock to Main Hub Tower Top (Left)"
+                        "region": "Burenia",
+                        "area": "Main Hub Tower Middle",
+                        "node": "Dock to Main Hub Tower Top (Left)"
                     },
                     "default_dock_weakness": "Open Passage",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -5242,11 +5307,13 @@
                     "valid_starting_location": false,
                     "dock_type": "other",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Main Hub Tower Middle",
-                        "node_name": "Dock to Main Hub Tower Top (Right)"
+                        "region": "Burenia",
+                        "area": "Main Hub Tower Middle",
+                        "node": "Dock to Main Hub Tower Top (Right)"
                     },
                     "default_dock_weakness": "Open Passage",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -5282,11 +5349,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Underwater Horseshoe",
-                        "node_name": "Dock to Main Hub Tower Top"
+                        "region": "Burenia",
+                        "area": "Underwater Horseshoe",
+                        "node": "Dock to Main Hub Tower Top"
                     },
                     "default_dock_weakness": "Phase Shift Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -5317,17 +5386,18 @@
                         "left_shield_entity": "{EMPTY}",
                         "left_shield_def": null,
                         "right_shield_entity": "{EMPTY}",
-                        "right_shield_def": null,
-                        "exclude_from_dock_rando": true
+                        "right_shield_def": null
                     },
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Teleport to Ferenia",
-                        "node_name": "Door to Main Hub Tower Top"
+                        "region": "Burenia",
+                        "area": "Teleport to Ferenia",
+                        "node": "Door to Main Hub Tower Top"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": true,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -5355,15 +5425,6 @@
                                                     "data": {
                                                         "type": "items",
                                                         "name": "Flash",
-                                                        "amount": 1,
-                                                        "negate": false
-                                                    }
-                                                },
-                                                {
-                                                    "type": "resource",
-                                                    "data": {
-                                                        "type": "items",
-                                                        "name": "Grapple",
                                                         "amount": 1,
                                                         "negate": false
                                                     }
@@ -5415,6 +5476,32 @@
                                                             }
                                                         ]
                                                     }
+                                                },
+                                                {
+                                                    "type": "and",
+                                                    "data": {
+                                                        "comment": null,
+                                                        "items": [
+                                                            {
+                                                                "type": "resource",
+                                                                "data": {
+                                                                    "type": "items",
+                                                                    "name": "Grapple",
+                                                                    "amount": 1,
+                                                                    "negate": false
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "resource",
+                                                                "data": {
+                                                                    "type": "tricks",
+                                                                    "name": "GrappleMovement",
+                                                                    "amount": 1,
+                                                                    "negate": false
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
                                                 }
                                             ]
                                         }
@@ -5451,17 +5538,18 @@
                         "left_shield_entity": "{EMPTY}",
                         "left_shield_def": null,
                         "right_shield_entity": "{EMPTY}",
-                        "right_shield_def": null,
-                        "exclude_from_dock_rando": true
+                        "right_shield_def": null
                     },
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Save Station Middle",
-                        "node_name": "Door to Main Hub Tower Top"
+                        "region": "Burenia",
+                        "area": "Save Station Middle",
+                        "node": "Door to Main Hub Tower Top"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": true,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -5511,11 +5599,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Flash Shift Room",
-                        "node_name": "Door to Main Hub Tower Top"
+                        "region": "Burenia",
+                        "area": "Flash Shift Room",
+                        "node": "Door to Main Hub Tower Top"
                     },
                     "default_dock_weakness": "Phase Shift Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -5551,11 +5641,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Flash Shift Room",
-                        "node_name": "Door from Main Hub Tower Top"
+                        "region": "Burenia",
+                        "area": "Flash Shift Room",
+                        "node": "Door from Main Hub Tower Top"
                     },
                     "default_dock_weakness": "Missile Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -5646,7 +5738,7 @@
                         "start_point_actor_name": "SP_Checkpoint_GhostDash",
                         "start_point_actor_def": "actordef:actors/logic/startpoint/charclasses/startpoint.bmsad"
                     },
-                    "valid_starting_location": true,
+                    "valid_starting_location": false,
                     "connections": {
                         "Door to Flash Shift Room (Lower)": {
                             "type": "and",
@@ -6121,19 +6213,20 @@
                         "left_shield_entity": "Root:pScenario:rEntitiesLayer:dctSublayers:default:dctActors:door_shield_plasma_003",
                         "left_shield_def": "actordef:actors/props/door_shield_plasma/charclasses/door_shield_plasma.bmsad",
                         "right_shield_entity": "Root:pScenario:rEntitiesLayer:dctSublayers:default:dctActors:door_shield_plasma_002",
-                        "right_shield_def": "actordef:actors/props/door_shield_plasma/charclasses/door_shield_plasma.bmsad",
-                        "excluded_dock_weaknesses": [
-                            "Grapple Beam Door"
-                        ]
+                        "right_shield_def": "actordef:actors/props/door_shield_plasma/charclasses/door_shield_plasma.bmsad"
                     },
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Energy Recharge South",
-                        "node_name": "Door to Main Hub Tower Middle"
+                        "region": "Burenia",
+                        "area": "Energy Recharge South",
+                        "node": "Door to Main Hub Tower Middle"
                     },
                     "default_dock_weakness": "Plasma Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [
+                        "Grapple Beam Door"
+                    ],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -6192,11 +6285,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Teleport to Ghavoran",
-                        "node_name": "Door to Main Hub Tower Middle (Charge)"
+                        "region": "Burenia",
+                        "area": "Teleport to Ghavoran",
+                        "node": "Door to Main Hub Tower Middle (Charge)"
                     },
                     "default_dock_weakness": "Access Locked",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -6245,6 +6340,68 @@
                                     {
                                         "type": "template",
                                         "data": "Horizontal Water Movement"
+                                    }
+                                ]
+                            }
+                        },
+                        "Upper Water Ledge - Right": {
+                            "type": "and",
+                            "data": {
+                                "comment": "https://youtu.be/HdSOvizUQjo",
+                                "items": [
+                                    {
+                                        "type": "resource",
+                                        "data": {
+                                            "type": "items",
+                                            "name": "Gravity",
+                                            "amount": 1,
+                                            "negate": false
+                                        }
+                                    },
+                                    {
+                                        "type": "resource",
+                                        "data": {
+                                            "type": "items",
+                                            "name": "Spin",
+                                            "amount": 1,
+                                            "negate": false
+                                        }
+                                    },
+                                    {
+                                        "type": "resource",
+                                        "data": {
+                                            "type": "items",
+                                            "name": "Flash",
+                                            "amount": 1,
+                                            "negate": false
+                                        }
+                                    },
+                                    {
+                                        "type": "resource",
+                                        "data": {
+                                            "type": "items",
+                                            "name": "Slide",
+                                            "amount": 1,
+                                            "negate": false
+                                        }
+                                    },
+                                    {
+                                        "type": "resource",
+                                        "data": {
+                                            "type": "tricks",
+                                            "name": "Slide",
+                                            "amount": 1,
+                                            "negate": false
+                                        }
+                                    },
+                                    {
+                                        "type": "resource",
+                                        "data": {
+                                            "type": "tricks",
+                                            "name": "Walljump",
+                                            "amount": 2,
+                                            "negate": false
+                                        }
                                     }
                                 ]
                             }
@@ -6303,21 +6460,16 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Teleport to Ghavoran",
-                        "node_name": "Door to Main Hub Tower Middle (Plasma)"
+                        "region": "Burenia",
+                        "area": "Teleport to Ghavoran",
+                        "node": "Door to Main Hub Tower Middle (Plasma)"
                     },
                     "default_dock_weakness": "Access Locked",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
-                        "Tunnel to Teleport to Ghavoran (Upper Tunnel)": {
-                            "type": "and",
-                            "data": {
-                                "comment": null,
-                                "items": []
-                            }
-                        },
                         "Left of Central Grapple Block": {
                             "type": "and",
                             "data": {
@@ -6370,6 +6522,13 @@
                                         "data": "Break/Move Grapple Block from Behind"
                                     }
                                 ]
+                            }
+                        },
+                        "Outside Upper Tunnel": {
+                            "type": "and",
+                            "data": {
+                                "comment": null,
+                                "items": []
                             }
                         }
                     }
@@ -6447,16 +6606,18 @@
                     "valid_starting_location": false,
                     "dock_type": "tunnel",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Teleport to Ghavoran",
-                        "node_name": "Tunnel to Main Hub Tower Middle (Upper)"
+                        "region": "Burenia",
+                        "area": "Teleport to Ghavoran",
+                        "node": "Tunnel to Main Hub Tower Middle (Upper)"
                     },
                     "default_dock_weakness": "Morph Ball Tunnel",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
                         "Door to Teleport to Ghavoran (Plasma)": {
-                            "type": "or",
+                            "type": "and",
                             "data": {
                                 "comment": null,
                                 "items": [
@@ -6464,7 +6625,7 @@
                                         "type": "resource",
                                         "data": {
                                             "type": "items",
-                                            "name": "Gravity",
+                                            "name": "Morph",
                                             "amount": 1,
                                             "negate": false
                                         }
@@ -6472,121 +6633,18 @@
                                     {
                                         "type": "resource",
                                         "data": {
-                                            "type": "items",
-                                            "name": "Magnet",
+                                            "type": "tricks",
+                                            "name": "Movement",
                                             "amount": 1,
                                             "negate": false
-                                        }
-                                    },
-                                    {
-                                        "type": "template",
-                                        "data": "Perform WBJ"
-                                    },
-                                    {
-                                        "type": "and",
-                                        "data": {
-                                            "comment": null,
-                                            "items": [
-                                                {
-                                                    "type": "resource",
-                                                    "data": {
-                                                        "type": "items",
-                                                        "name": "Grapple",
-                                                        "amount": 1,
-                                                        "negate": false
-                                                    }
-                                                },
-                                                {
-                                                    "type": "resource",
-                                                    "data": {
-                                                        "type": "tricks",
-                                                        "name": "GrappleMovement",
-                                                        "amount": 1,
-                                                        "negate": false
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    },
-                                    {
-                                        "type": "and",
-                                        "data": {
-                                            "comment": null,
-                                            "items": [
-                                                {
-                                                    "type": "resource",
-                                                    "data": {
-                                                        "type": "items",
-                                                        "name": "Morph",
-                                                        "amount": 1,
-                                                        "negate": false
-                                                    }
-                                                },
-                                                {
-                                                    "type": "resource",
-                                                    "data": {
-                                                        "type": "tricks",
-                                                        "name": "Movement",
-                                                        "amount": 1,
-                                                        "negate": false
-                                                    }
-                                                }
-                                            ]
                                         }
                                     }
                                 ]
                             }
                         },
-                        "Upper Water Ledge - Right": {
-                            "type": "or",
-                            "data": {
-                                "comment": null,
-                                "items": [
-                                    {
-                                        "type": "resource",
-                                        "data": {
-                                            "type": "items",
-                                            "name": "Gravity",
-                                            "amount": 1,
-                                            "negate": false
-                                        }
-                                    },
-                                    {
-                                        "type": "template",
-                                        "data": "Use Spin Boost"
-                                    },
-                                    {
-                                        "type": "template",
-                                        "data": "Perform WBJ"
-                                    },
-                                    {
-                                        "type": "and",
-                                        "data": {
-                                            "comment": null,
-                                            "items": [
-                                                {
-                                                    "type": "resource",
-                                                    "data": {
-                                                        "type": "items",
-                                                        "name": "Grapple",
-                                                        "amount": 1,
-                                                        "negate": false
-                                                    }
-                                                },
-                                                {
-                                                    "type": "resource",
-                                                    "data": {
-                                                        "type": "tricks",
-                                                        "name": "GrappleMovement",
-                                                        "amount": 1,
-                                                        "negate": false
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
-                            }
+                        "Outside Upper Tunnel": {
+                            "type": "template",
+                            "data": "Can Slide Underwater"
                         }
                     }
                 },
@@ -6606,11 +6664,13 @@
                     "valid_starting_location": false,
                     "dock_type": "tunnel",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Teleport to Ghavoran",
-                        "node_name": "Tunnel to Main Hub Tower Middle (Lower)"
+                        "region": "Burenia",
+                        "area": "Teleport to Ghavoran",
+                        "node": "Tunnel to Main Hub Tower Middle (Lower)"
                     },
                     "default_dock_weakness": "Morph Ball Tunnel",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -6646,6 +6706,15 @@
                                                     "data": {
                                                         "type": "items",
                                                         "name": "Speed",
+                                                        "amount": 1,
+                                                        "negate": false
+                                                    }
+                                                },
+                                                {
+                                                    "type": "resource",
+                                                    "data": {
+                                                        "type": "items",
+                                                        "name": "Flash",
                                                         "amount": 1,
                                                         "negate": false
                                                     }
@@ -6710,6 +6779,32 @@
                                     {
                                         "type": "template",
                                         "data": "Perform WBJ"
+                                    },
+                                    {
+                                        "type": "and",
+                                        "data": {
+                                            "comment": null,
+                                            "items": [
+                                                {
+                                                    "type": "resource",
+                                                    "data": {
+                                                        "type": "items",
+                                                        "name": "Grapple",
+                                                        "amount": 1,
+                                                        "negate": false
+                                                    }
+                                                },
+                                                {
+                                                    "type": "resource",
+                                                    "data": {
+                                                        "type": "tricks",
+                                                        "name": "GrappleMovement",
+                                                        "amount": 1,
+                                                        "negate": false
+                                                    }
+                                                }
+                                            ]
+                                        }
                                     }
                                 ]
                             }
@@ -6752,82 +6847,6 @@
                                             "name": "Grapple",
                                             "amount": 1,
                                             "negate": false
-                                        }
-                                    }
-                                ]
-                            }
-                        },
-                        "Dock to Main Hub Tower Top (Left)": {
-                            "type": "and",
-                            "data": {
-                                "comment": null,
-                                "items": [
-                                    {
-                                        "type": "or",
-                                        "data": {
-                                            "comment": null,
-                                            "items": [
-                                                {
-                                                    "type": "resource",
-                                                    "data": {
-                                                        "type": "items",
-                                                        "name": "Magnet",
-                                                        "amount": 1,
-                                                        "negate": false
-                                                    }
-                                                },
-                                                {
-                                                    "type": "resource",
-                                                    "data": {
-                                                        "type": "items",
-                                                        "name": "Gravity",
-                                                        "amount": 1,
-                                                        "negate": false
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    },
-                                    {
-                                        "type": "or",
-                                        "data": {
-                                            "comment": null,
-                                            "items": [
-                                                {
-                                                    "type": "template",
-                                                    "data": "Simple IBJ"
-                                                },
-                                                {
-                                                    "type": "template",
-                                                    "data": "Use Spin Boost"
-                                                },
-                                                {
-                                                    "type": "and",
-                                                    "data": {
-                                                        "comment": null,
-                                                        "items": [
-                                                            {
-                                                                "type": "resource",
-                                                                "data": {
-                                                                    "type": "items",
-                                                                    "name": "Flash",
-                                                                    "amount": 1,
-                                                                    "negate": false
-                                                                }
-                                                            },
-                                                            {
-                                                                "type": "resource",
-                                                                "data": {
-                                                                    "type": "tricks",
-                                                                    "name": "Walljump",
-                                                                    "amount": 1,
-                                                                    "negate": false
-                                                                }
-                                                            }
-                                                        ]
-                                                    }
-                                                }
-                                            ]
                                         }
                                     }
                                 ]
@@ -6890,6 +6909,95 @@
                             "data": {
                                 "comment": null,
                                 "items": []
+                            }
+                        },
+                        "Dock to Main Hub Tower Top (Left)": {
+                            "type": "and",
+                            "data": {
+                                "comment": null,
+                                "items": [
+                                    {
+                                        "type": "or",
+                                        "data": {
+                                            "comment": null,
+                                            "items": [
+                                                {
+                                                    "type": "resource",
+                                                    "data": {
+                                                        "type": "items",
+                                                        "name": "Gravity",
+                                                        "amount": 1,
+                                                        "negate": false
+                                                    }
+                                                },
+                                                {
+                                                    "type": "resource",
+                                                    "data": {
+                                                        "type": "items",
+                                                        "name": "Magnet",
+                                                        "amount": 1,
+                                                        "negate": false
+                                                    }
+                                                },
+                                                {
+                                                    "type": "resource",
+                                                    "data": {
+                                                        "type": "tricks",
+                                                        "name": "Movement",
+                                                        "amount": 2,
+                                                        "negate": false
+                                                    }
+                                                },
+                                                {
+                                                    "type": "and",
+                                                    "data": {
+                                                        "comment": null,
+                                                        "items": [
+                                                            {
+                                                                "type": "resource",
+                                                                "data": {
+                                                                    "type": "tricks",
+                                                                    "name": "WBJ",
+                                                                    "amount": 2,
+                                                                    "negate": false
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "template",
+                                                                "data": "Lay Bomb"
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "type": "or",
+                                        "data": {
+                                            "comment": null,
+                                            "items": [
+                                                {
+                                                    "type": "resource",
+                                                    "data": {
+                                                        "type": "items",
+                                                        "name": "Flash",
+                                                        "amount": 1,
+                                                        "negate": false
+                                                    }
+                                                },
+                                                {
+                                                    "type": "template",
+                                                    "data": "Use Spin Boost"
+                                                },
+                                                {
+                                                    "type": "template",
+                                                    "data": "Simple IBJ"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
                             }
                         }
                     }
@@ -7165,6 +7273,41 @@
                                 ]
                             }
                         },
+                        "Event - Lower Magnet Wall": {
+                            "type": "and",
+                            "data": {
+                                "comment": null,
+                                "items": [
+                                    {
+                                        "type": "resource",
+                                        "data": {
+                                            "type": "items",
+                                            "name": "Gravity",
+                                            "amount": 1,
+                                            "negate": false
+                                        }
+                                    },
+                                    {
+                                        "type": "resource",
+                                        "data": {
+                                            "type": "items",
+                                            "name": "Magnet",
+                                            "amount": 1,
+                                            "negate": false
+                                        }
+                                    },
+                                    {
+                                        "type": "resource",
+                                        "data": {
+                                            "type": "items",
+                                            "name": "Speed",
+                                            "amount": 1,
+                                            "negate": false
+                                        }
+                                    }
+                                ]
+                            }
+                        },
                         "Upper Water Ledge - Left": {
                             "type": "and",
                             "data": {
@@ -7356,8 +7499,110 @@
                             }
                         },
                         "Upper Water Ledge - Right": {
-                            "type": "template",
-                            "data": "Horizontal Water Movement"
+                            "type": "or",
+                            "data": {
+                                "comment": null,
+                                "items": [
+                                    {
+                                        "type": "template",
+                                        "data": "Horizontal Water Movement"
+                                    },
+                                    {
+                                        "type": "and",
+                                        "data": {
+                                            "comment": null,
+                                            "items": [
+                                                {
+                                                    "type": "resource",
+                                                    "data": {
+                                                        "type": "items",
+                                                        "name": "Gravity",
+                                                        "amount": 1,
+                                                        "negate": false
+                                                    }
+                                                },
+                                                {
+                                                    "type": "resource",
+                                                    "data": {
+                                                        "type": "items",
+                                                        "name": "Spin",
+                                                        "amount": 1,
+                                                        "negate": false
+                                                    }
+                                                },
+                                                {
+                                                    "type": "or",
+                                                    "data": {
+                                                        "comment": null,
+                                                        "items": [
+                                                            {
+                                                                "type": "and",
+                                                                "data": {
+                                                                    "comment": "https://youtu.be/EKucxlQ6XtE",
+                                                                    "items": [
+                                                                        {
+                                                                            "type": "resource",
+                                                                            "data": {
+                                                                                "type": "items",
+                                                                                "name": "Slide",
+                                                                                "amount": 1,
+                                                                                "negate": false
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "type": "resource",
+                                                                            "data": {
+                                                                                "type": "tricks",
+                                                                                "name": "Slide",
+                                                                                "amount": 2,
+                                                                                "negate": false
+                                                                            }
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "and",
+                                                                "data": {
+                                                                    "comment": "https://youtu.be/rb01nTDYOXk",
+                                                                    "items": [
+                                                                        {
+                                                                            "type": "resource",
+                                                                            "data": {
+                                                                                "type": "tricks",
+                                                                                "name": "Movement",
+                                                                                "amount": 2,
+                                                                                "negate": false
+                                                                            }
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "and",
+                                                                "data": {
+                                                                    "comment": "https://youtu.be/wlCOhr95pAY",
+                                                                    "items": [
+                                                                        {
+                                                                            "type": "resource",
+                                                                            "data": {
+                                                                                "type": "tricks",
+                                                                                "name": "Walljump",
+                                                                                "amount": 2,
+                                                                                "negate": false
+                                                                            }
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
                         },
                         "Falling from above": {
                             "type": "and",
@@ -7383,18 +7628,120 @@
                     "extra": {},
                     "valid_starting_location": false,
                     "connections": {
-                        "Tunnel to Teleport to Ghavoran (Upper Tunnel)": {
+                        "Upper Water Ledge - Left": {
+                            "type": "or",
+                            "data": {
+                                "comment": null,
+                                "items": [
+                                    {
+                                        "type": "template",
+                                        "data": "Horizontal Water Movement"
+                                    },
+                                    {
+                                        "type": "and",
+                                        "data": {
+                                            "comment": null,
+                                            "items": [
+                                                {
+                                                    "type": "resource",
+                                                    "data": {
+                                                        "type": "items",
+                                                        "name": "Gravity",
+                                                        "amount": 1,
+                                                        "negate": false
+                                                    }
+                                                },
+                                                {
+                                                    "type": "resource",
+                                                    "data": {
+                                                        "type": "items",
+                                                        "name": "Spin",
+                                                        "amount": 1,
+                                                        "negate": false
+                                                    }
+                                                },
+                                                {
+                                                    "type": "or",
+                                                    "data": {
+                                                        "comment": null,
+                                                        "items": [
+                                                            {
+                                                                "type": "and",
+                                                                "data": {
+                                                                    "comment": "https://youtu.be/EKucxlQ6XtE",
+                                                                    "items": [
+                                                                        {
+                                                                            "type": "resource",
+                                                                            "data": {
+                                                                                "type": "items",
+                                                                                "name": "Slide",
+                                                                                "amount": 1,
+                                                                                "negate": false
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "type": "resource",
+                                                                            "data": {
+                                                                                "type": "tricks",
+                                                                                "name": "Slide",
+                                                                                "amount": 2,
+                                                                                "negate": false
+                                                                            }
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "and",
+                                                                "data": {
+                                                                    "comment": "https://youtu.be/rb01nTDYOXk",
+                                                                    "items": [
+                                                                        {
+                                                                            "type": "resource",
+                                                                            "data": {
+                                                                                "type": "tricks",
+                                                                                "name": "Movement",
+                                                                                "amount": 2,
+                                                                                "negate": false
+                                                                            }
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "and",
+                                                                "data": {
+                                                                    "comment": "https://youtu.be/wlCOhr95pAY",
+                                                                    "items": [
+                                                                        {
+                                                                            "type": "resource",
+                                                                            "data": {
+                                                                                "type": "tricks",
+                                                                                "name": "Walljump",
+                                                                                "amount": 2,
+                                                                                "negate": false
+                                                                            }
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        "Falling from above": {
                             "type": "and",
                             "data": {
                                 "comment": null,
                                 "items": []
                             }
                         },
-                        "Upper Water Ledge - Left": {
-                            "type": "template",
-                            "data": "Horizontal Water Movement"
-                        },
-                        "Falling from above": {
+                        "Outside Upper Tunnel": {
                             "type": "and",
                             "data": {
                                 "comment": null,
@@ -7468,11 +7815,13 @@
                     "valid_starting_location": false,
                     "dock_type": "other",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Main Hub Tower Top",
-                        "node_name": "Dock to Main Hub Tower Middle (Left)"
+                        "region": "Burenia",
+                        "area": "Main Hub Tower Top",
+                        "node": "Dock to Main Hub Tower Middle (Left)"
                     },
                     "default_dock_weakness": "Open Passage",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -7510,11 +7859,13 @@
                     "valid_starting_location": false,
                     "dock_type": "other",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Main Hub Tower Top",
-                        "node_name": "Dock to Main Hub Tower Middle (Right)"
+                        "region": "Burenia",
+                        "area": "Main Hub Tower Top",
+                        "node": "Dock to Main Hub Tower Middle (Right)"
                     },
                     "default_dock_weakness": "Open Passage",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -7543,11 +7894,13 @@
                     "valid_starting_location": false,
                     "dock_type": "other",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Main Hub Tower Bottom",
-                        "node_name": "Dock from Main Hub Tower Middle"
+                        "region": "Burenia",
+                        "area": "Main Hub Tower Bottom",
+                        "node": "Dock from Main Hub Tower Middle"
                     },
                     "default_dock_weakness": "Open Passage",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {}
@@ -7573,6 +7926,156 @@
                             "data": {
                                 "comment": null,
                                 "items": []
+                            }
+                        }
+                    }
+                },
+                "Outside Upper Tunnel": {
+                    "node_type": "generic",
+                    "heal": false,
+                    "coordinates": {
+                        "x": -1250.0,
+                        "y": -3500.0,
+                        "z": 0.0
+                    },
+                    "description": "",
+                    "layers": [
+                        "default"
+                    ],
+                    "extra": {},
+                    "valid_starting_location": false,
+                    "connections": {
+                        "Door to Teleport to Ghavoran (Plasma)": {
+                            "type": "or",
+                            "data": {
+                                "comment": null,
+                                "items": [
+                                    {
+                                        "type": "resource",
+                                        "data": {
+                                            "type": "items",
+                                            "name": "Gravity",
+                                            "amount": 1,
+                                            "negate": false
+                                        }
+                                    },
+                                    {
+                                        "type": "resource",
+                                        "data": {
+                                            "type": "items",
+                                            "name": "Magnet",
+                                            "amount": 1,
+                                            "negate": false
+                                        }
+                                    },
+                                    {
+                                        "type": "template",
+                                        "data": "Perform WBJ"
+                                    },
+                                    {
+                                        "type": "and",
+                                        "data": {
+                                            "comment": null,
+                                            "items": [
+                                                {
+                                                    "type": "resource",
+                                                    "data": {
+                                                        "type": "items",
+                                                        "name": "Grapple",
+                                                        "amount": 1,
+                                                        "negate": false
+                                                    }
+                                                },
+                                                {
+                                                    "type": "resource",
+                                                    "data": {
+                                                        "type": "tricks",
+                                                        "name": "GrappleMovement",
+                                                        "amount": 1,
+                                                        "negate": false
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        "Tunnel to Teleport to Ghavoran (Upper Tunnel)": {
+                            "type": "and",
+                            "data": {
+                                "comment": null,
+                                "items": [
+                                    {
+                                        "type": "resource",
+                                        "data": {
+                                            "type": "items",
+                                            "name": "Morph",
+                                            "amount": 1,
+                                            "negate": false
+                                        }
+                                    },
+                                    {
+                                        "type": "resource",
+                                        "data": {
+                                            "type": "events",
+                                            "name": "s040_aqua:default:db_reg_aq_012",
+                                            "amount": 1,
+                                            "negate": false
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        "Upper Water Ledge - Right": {
+                            "type": "or",
+                            "data": {
+                                "comment": null,
+                                "items": [
+                                    {
+                                        "type": "resource",
+                                        "data": {
+                                            "type": "items",
+                                            "name": "Gravity",
+                                            "amount": 1,
+                                            "negate": false
+                                        }
+                                    },
+                                    {
+                                        "type": "template",
+                                        "data": "Perform WBJ"
+                                    },
+                                    {
+                                        "type": "template",
+                                        "data": "Use Spin Boost"
+                                    },
+                                    {
+                                        "type": "and",
+                                        "data": {
+                                            "comment": null,
+                                            "items": [
+                                                {
+                                                    "type": "resource",
+                                                    "data": {
+                                                        "type": "items",
+                                                        "name": "Grapple",
+                                                        "amount": 1,
+                                                        "negate": false
+                                                    }
+                                                },
+                                                {
+                                                    "type": "resource",
+                                                    "data": {
+                                                        "type": "tricks",
+                                                        "name": "GrappleMovement",
+                                                        "amount": 1,
+                                                        "negate": false
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
                             }
                         }
                     }
@@ -7640,11 +8143,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Energy Recharge South",
-                        "node_name": "Door to Main Hub Tower Bottom"
+                        "region": "Burenia",
+                        "area": "Energy Recharge South",
+                        "node": "Door to Main Hub Tower Bottom"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -7698,11 +8203,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Save Station South Access",
-                        "node_name": "Door to Main Hub Tower Bottom (Upper)"
+                        "region": "Burenia",
+                        "area": "Save Station South Access",
+                        "node": "Door to Main Hub Tower Bottom (Upper)"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -7764,11 +8271,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Save Station South Access",
-                        "node_name": "Door to Main Hub Tower Bottom (Lower)"
+                        "region": "Burenia",
+                        "area": "Save Station South Access",
+                        "node": "Door to Main Hub Tower Bottom (Lower)"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -7813,11 +8322,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Storm Missile Gate Room",
-                        "node_name": "Door to Main Hub Tower Bottom"
+                        "region": "Burenia",
+                        "area": "Storm Missile Gate Room",
+                        "node": "Door to Main Hub Tower Bottom"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -8067,6 +8578,32 @@
                     "extra": {},
                     "valid_starting_location": false,
                     "connections": {
+                        "Door to Energy Recharge South": {
+                            "type": "and",
+                            "data": {
+                                "comment": null,
+                                "items": [
+                                    {
+                                        "type": "resource",
+                                        "data": {
+                                            "type": "items",
+                                            "name": "Gravity",
+                                            "amount": 1,
+                                            "negate": false
+                                        }
+                                    },
+                                    {
+                                        "type": "resource",
+                                        "data": {
+                                            "type": "items",
+                                            "name": "Speed",
+                                            "amount": 1,
+                                            "negate": false
+                                        }
+                                    }
+                                ]
+                            }
+                        },
                         "Door to Save Station South Access (Lower)": {
                             "type": "and",
                             "data": {
@@ -8226,11 +8763,13 @@
                     "valid_starting_location": false,
                     "dock_type": "other",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Gravity Suit Room Access",
-                        "node_name": "Dock to Main Hub Tower Bottom"
+                        "region": "Burenia",
+                        "area": "Gravity Suit Room Access",
+                        "node": "Dock to Main Hub Tower Bottom"
                     },
                     "default_dock_weakness": "Open Passage",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -8429,11 +8968,13 @@
                     "valid_starting_location": false,
                     "dock_type": "tunnel",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Storm Missile Gate Room",
-                        "node_name": "Tunnel to Main Hub Tower Bottom"
+                        "region": "Burenia",
+                        "area": "Storm Missile Gate Room",
+                        "node": "Tunnel to Main Hub Tower Bottom"
                     },
                     "default_dock_weakness": "Morph Ball Tunnel",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -8463,6 +9004,50 @@
                     "extra": {},
                     "valid_starting_location": false,
                     "connections": {
+                        "Door to Energy Recharge South": {
+                            "type": "and",
+                            "data": {
+                                "comment": null,
+                                "items": [
+                                    {
+                                        "type": "resource",
+                                        "data": {
+                                            "type": "events",
+                                            "name": "BureniaPrepareSpeedSave",
+                                            "amount": 1,
+                                            "negate": false
+                                        }
+                                    },
+                                    {
+                                        "type": "resource",
+                                        "data": {
+                                            "type": "events",
+                                            "name": "s040_aqua:default:db_reg_aq_003",
+                                            "amount": 1,
+                                            "negate": false
+                                        }
+                                    },
+                                    {
+                                        "type": "resource",
+                                        "data": {
+                                            "type": "items",
+                                            "name": "Speed",
+                                            "amount": 1,
+                                            "negate": false
+                                        }
+                                    },
+                                    {
+                                        "type": "resource",
+                                        "data": {
+                                            "type": "tricks",
+                                            "name": "Speedbooster",
+                                            "amount": 1,
+                                            "negate": false
+                                        }
+                                    }
+                                ]
+                            }
+                        },
                         "Door to Save Station South Access (Upper)": {
                             "type": "resource",
                             "data": {
@@ -9100,11 +9685,13 @@
                     "valid_starting_location": false,
                     "dock_type": "other",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Main Hub Tower Middle",
-                        "node_name": "Dock to Main Hub Tower Bottom"
+                        "region": "Burenia",
+                        "area": "Main Hub Tower Middle",
+                        "node": "Dock to Main Hub Tower Bottom"
                     },
                     "default_dock_weakness": "Blocked Passage",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -9232,17 +9819,18 @@
                         "left_shield_entity": "{EMPTY}",
                         "left_shield_def": null,
                         "right_shield_entity": "{EMPTY}",
-                        "right_shield_def": null,
-                        "exclude_from_dock_rando": true
+                        "right_shield_def": null
                     },
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Main Hub Tower Top",
-                        "node_name": "Door to Save Station Middle"
+                        "region": "Burenia",
+                        "area": "Main Hub Tower Top",
+                        "node": "Door to Save Station Middle"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": true,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -9273,7 +9861,7 @@
                         "start_point_actor_name": "savestation_000_platform",
                         "start_point_actor_def": "actordef:actors/props/weightactivatedplatform_save/charclasses/weightactivatedplatform_save.bmsad"
                     },
-                    "valid_starting_location": false,
+                    "valid_starting_location": true,
                     "connections": {
                         "Door to Main Hub Tower Top": {
                             "type": "and",
@@ -9339,11 +9927,13 @@
                     "valid_starting_location": false,
                     "dock_type": "other",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Main Hub Tower Top",
-                        "node_name": "Door to Underwater Horseshoe"
+                        "region": "Burenia",
+                        "area": "Main Hub Tower Top",
+                        "node": "Door to Underwater Horseshoe"
                     },
                     "default_dock_weakness": "Open Passage",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -9379,11 +9969,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Burenia Hub to Dairon",
-                        "node_name": "Door to Underwater Horseshoe"
+                        "region": "Burenia",
+                        "area": "Burenia Hub to Dairon",
+                        "node": "Door to Underwater Horseshoe"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -9446,19 +10038,20 @@
                         "left_shield_entity": "Root:pScenario:rEntitiesLayer:dctSublayers:default:dctActors:door_shield_plasma_003",
                         "left_shield_def": "actordef:actors/props/door_shield_plasma/charclasses/door_shield_plasma.bmsad",
                         "right_shield_entity": "Root:pScenario:rEntitiesLayer:dctSublayers:default:dctActors:door_shield_plasma_002",
-                        "right_shield_def": "actordef:actors/props/door_shield_plasma/charclasses/door_shield_plasma.bmsad",
-                        "excluded_dock_weaknesses": [
-                            "Grapple Beam Door"
-                        ]
+                        "right_shield_def": "actordef:actors/props/door_shield_plasma/charclasses/door_shield_plasma.bmsad"
                     },
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Main Hub Tower Middle",
-                        "node_name": "Door to Energy Recharge South"
+                        "region": "Burenia",
+                        "area": "Main Hub Tower Middle",
+                        "node": "Door to Energy Recharge South"
                     },
                     "default_dock_weakness": "Plasma Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [
+                        "Grapple Beam Door"
+                    ],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -9517,11 +10110,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Main Hub Tower Bottom",
-                        "node_name": "Door to Energy Recharge South"
+                        "region": "Burenia",
+                        "area": "Main Hub Tower Bottom",
+                        "node": "Door to Energy Recharge South"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -9670,11 +10265,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Main Hub Tower Top",
-                        "node_name": "Door to Flash Shift Room (Upper)"
+                        "region": "Burenia",
+                        "area": "Main Hub Tower Top",
+                        "node": "Door to Flash Shift Room (Upper)"
                     },
                     "default_dock_weakness": "Phase Shift Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -9710,11 +10307,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Main Hub Tower Top",
-                        "node_name": "Door to Flash Shift Room (Lower)"
+                        "region": "Burenia",
+                        "area": "Main Hub Tower Top",
+                        "node": "Door to Flash Shift Room (Lower)"
                     },
                     "default_dock_weakness": "Access Closed",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -9779,7 +10378,7 @@
                         "start_point_actor_name": "SP_Checkpoint_GhostDashObtained",
                         "start_point_actor_def": "actordef:actors/logic/startpoint/charclasses/startpoint.bmsad"
                     },
-                    "valid_starting_location": true,
+                    "valid_starting_location": false,
                     "connections": {
                         "Door from Main Hub Tower Top": {
                             "type": "and",
@@ -9845,11 +10444,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Early Gravity Speedboost Room 1",
-                        "node_name": "Door to Teleport to Ghavoran (Upper)"
+                        "region": "Burenia",
+                        "area": "Early Gravity Speedboost Room 1",
+                        "node": "Door to Teleport to Ghavoran (Upper)"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -10002,19 +10603,20 @@
                         "left_shield_entity": "{EMPTY}",
                         "left_shield_def": null,
                         "right_shield_entity": "{EMPTY}",
-                        "right_shield_def": null,
-                        "excluded_dock_weaknesses": [
-                            "Grapple Beam Door"
-                        ]
+                        "right_shield_def": null
                     },
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Early Gravity Speedboost Room 1",
-                        "node_name": "Door to Teleport to Ghavoran (Lower)"
+                        "region": "Burenia",
+                        "area": "Early Gravity Speedboost Room 1",
+                        "node": "Door to Teleport to Ghavoran (Lower)"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [
+                        "Grapple Beam Door"
+                    ],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -10052,11 +10654,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Main Hub Tower Middle",
-                        "node_name": "Door to Teleport to Ghavoran (Charge)"
+                        "region": "Burenia",
+                        "area": "Main Hub Tower Middle",
+                        "node": "Door to Teleport to Ghavoran (Charge)"
                     },
                     "default_dock_weakness": "Charge Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -10132,11 +10736,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Main Hub Tower Middle",
-                        "node_name": "Door to Teleport to Ghavoran (Plasma)"
+                        "region": "Burenia",
+                        "area": "Main Hub Tower Middle",
+                        "node": "Door to Teleport to Ghavoran (Plasma)"
                     },
                     "default_dock_weakness": "Plasma Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -10181,11 +10787,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Gravity Suit Tower",
-                        "node_name": "Door to Teleport to Ghavoran"
+                        "region": "Burenia",
+                        "area": "Gravity Suit Tower",
+                        "node": "Door to Teleport to Ghavoran"
                     },
                     "default_dock_weakness": "Access Locked",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -10269,10 +10877,10 @@
                         "start_point_actor_name": "teleporter_forest_000_platform",
                         "start_point_actor_def": "actordef:actors/props/weightactivatedplatform_teleport/charclasses/weightactivatedplatform_teleport.bmsad"
                     },
-                    "valid_starting_location": true,
+                    "valid_starting_location": false,
                     "destination": {
-                        "world_name": "Ghavoran",
-                        "area_name": "Teleport to Burenia"
+                        "region": "Ghavoran",
+                        "area": "Teleport to Burenia"
                     },
                     "keep_name_when_vanilla": true,
                     "editable": true,
@@ -10320,8 +10928,25 @@
                                         "data": "Lay Bomb"
                                     },
                                     {
-                                        "type": "template",
-                                        "data": "Lay Power Bomb"
+                                        "type": "and",
+                                        "data": {
+                                            "comment": null,
+                                            "items": [
+                                                {
+                                                    "type": "template",
+                                                    "data": "Lay Power Bomb"
+                                                },
+                                                {
+                                                    "type": "resource",
+                                                    "data": {
+                                                        "type": "items",
+                                                        "name": "PBAmmo",
+                                                        "amount": 2,
+                                                        "negate": false
+                                                    }
+                                                }
+                                            ]
+                                        }
                                     }
                                 ]
                             }
@@ -10401,13 +11026,8 @@
                                 "comment": null,
                                 "items": [
                                     {
-                                        "type": "resource",
-                                        "data": {
-                                            "type": "items",
-                                            "name": "Morph",
-                                            "amount": 1,
-                                            "negate": false
-                                        }
+                                        "type": "template",
+                                        "data": "Can Slide Underwater"
                                     },
                                     {
                                         "type": "resource",
@@ -10464,11 +11084,13 @@
                     "valid_starting_location": false,
                     "dock_type": "tunnel",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Main Hub Tower Middle",
-                        "node_name": "Tunnel to Teleport to Ghavoran (Upper Tunnel)"
+                        "region": "Burenia",
+                        "area": "Main Hub Tower Middle",
+                        "node": "Tunnel to Teleport to Ghavoran (Upper Tunnel)"
                     },
-                    "default_dock_weakness": "Morph Ball Tunnel",
+                    "default_dock_weakness": "Slide Tunnel",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -10611,11 +11233,13 @@
                     "valid_starting_location": false,
                     "dock_type": "tunnel",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Main Hub Tower Middle",
-                        "node_name": "Tunnel to Teleport to Ghavoran (Lower Tunnel)"
+                        "region": "Burenia",
+                        "area": "Main Hub Tower Middle",
+                        "node": "Tunnel to Teleport to Ghavoran (Lower Tunnel)"
                     },
                     "default_dock_weakness": "Morph Ball Tunnel",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -10658,7 +11282,7 @@
             }
         },
         "Navigation Station South": {
-            "default_node": "Navigation Room",
+            "default_node": "Save Station",
             "extra": {
                 "total_boundings": {
                     "x1": 9000.0,
@@ -10710,11 +11334,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Gravity Suit Tower",
-                        "node_name": "Door to Navigation Station South"
+                        "region": "Burenia",
+                        "area": "Gravity Suit Tower",
+                        "node": "Door to Navigation Station South"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -10750,11 +11376,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Transport to Artaria",
-                        "node_name": "Door to Navigation Station South"
+                        "region": "Burenia",
+                        "area": "Transport to Artaria",
+                        "node": "Door to Navigation Station South"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -10765,7 +11393,7 @@
                                 "items": []
                             }
                         },
-                        "Navigation Room": {
+                        "Save Station": {
                             "type": "and",
                             "data": {
                                 "comment": null,
@@ -10774,7 +11402,7 @@
                         }
                     }
                 },
-                "Navigation Room": {
+                "Save Station": {
                     "node_type": "hint",
                     "heal": false,
                     "coordinates": {
@@ -10794,7 +11422,7 @@
                         "hint_id": "AQUA_2",
                         "string_asset_id": 8
                     },
-                    "valid_starting_location": false,
+                    "valid_starting_location": true,
                     "kind": "generic",
                     "requirement_to_collect": {
                         "type": "and",
@@ -10872,11 +11500,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Navigation Station South",
-                        "node_name": "Door to Transport to Artaria"
+                        "region": "Burenia",
+                        "area": "Navigation Station South",
+                        "node": "Door to Transport to Artaria"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -10949,10 +11579,10 @@
                         "start_point_actor_name": "elevator_cave_000_platform",
                         "start_point_actor_def": "actordef:actors/props/weightactivatedplatform_elevator/charclasses/weightactivatedplatform_elevator.bmsad"
                     },
-                    "valid_starting_location": true,
+                    "valid_starting_location": false,
                     "destination": {
-                        "world_name": "Artaria",
-                        "area_name": "Transport to Burenia"
+                        "region": "Artaria",
+                        "area": "Transport to Burenia"
                     },
                     "keep_name_when_vanilla": true,
                     "editable": true,
@@ -11021,11 +11651,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Teleport to Ghavoran",
-                        "node_name": "Door to Early Gravity Speedboost Room 1 (Upper)"
+                        "region": "Burenia",
+                        "area": "Teleport to Ghavoran",
+                        "node": "Door to Early Gravity Speedboost Room 1 (Upper)"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -11063,19 +11695,20 @@
                         "left_shield_entity": "{EMPTY}",
                         "left_shield_def": null,
                         "right_shield_entity": "{EMPTY}",
-                        "right_shield_def": null,
-                        "excluded_dock_weaknesses": [
-                            "Grapple Beam Door"
-                        ]
+                        "right_shield_def": null
                     },
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Teleport to Ghavoran",
-                        "node_name": "Door to Early Gravity Speedboost Room 1 (Lower)"
+                        "region": "Burenia",
+                        "area": "Teleport to Ghavoran",
+                        "node": "Door to Early Gravity Speedboost Room 1 (Lower)"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [
+                        "Grapple Beam Door"
+                    ],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -11373,11 +12006,13 @@
                     "valid_starting_location": false,
                     "dock_type": "other",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Early Gravity Speedboost Room 2",
-                        "node_name": "Dock to Early Gravity Speedboost Room 1 (Upper)"
+                        "region": "Burenia",
+                        "area": "Early Gravity Speedboost Room 2",
+                        "node": "Dock to Early Gravity Speedboost Room 1 (Upper)"
                     },
                     "default_dock_weakness": "Open Passage",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -11410,11 +12045,13 @@
                     "valid_starting_location": false,
                     "dock_type": "other",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Early Gravity Speedboost Room 2",
-                        "node_name": "Dock to Early Gravity Speedboost Room 1 (Lower)"
+                        "region": "Burenia",
+                        "area": "Early Gravity Speedboost Room 2",
+                        "node": "Dock to Early Gravity Speedboost Room 1 (Lower)"
                     },
                     "default_dock_weakness": "Open Passage",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -11445,11 +12082,13 @@
                     "valid_starting_location": false,
                     "dock_type": "tunnel",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Gravity Suit Tower",
-                        "node_name": "Tunnel to Early Gravity Speedboost Room 1"
+                        "region": "Burenia",
+                        "area": "Gravity Suit Tower",
+                        "node": "Tunnel to Early Gravity Speedboost Room 1"
                     },
                     "default_dock_weakness": "Morph Ball Tunnel",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -11537,11 +12176,13 @@
                     "valid_starting_location": false,
                     "dock_type": "other",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Early Gravity Speedboost Room 1",
-                        "node_name": "Dock to Early Gravity Speedboost Room 2 (Upper)"
+                        "region": "Burenia",
+                        "area": "Early Gravity Speedboost Room 1",
+                        "node": "Dock to Early Gravity Speedboost Room 2 (Upper)"
                     },
                     "default_dock_weakness": "Open Passage",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -11605,11 +12246,13 @@
                     "valid_starting_location": false,
                     "dock_type": "other",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Early Gravity Speedboost Room 1",
-                        "node_name": "Dock to Early Gravity Speedboost Room 2 (Lower)"
+                        "region": "Burenia",
+                        "area": "Early Gravity Speedboost Room 1",
+                        "node": "Dock to Early Gravity Speedboost Room 2 (Lower)"
                     },
                     "default_dock_weakness": "Open Passage",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -11923,11 +12566,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Gravity Suit Room",
-                        "node_name": "Door to Gravity Suit Tower (Upper)"
+                        "region": "Burenia",
+                        "area": "Gravity Suit Room",
+                        "node": "Door to Gravity Suit Tower (Upper)"
                     },
                     "default_dock_weakness": "Missile Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -12147,11 +12792,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Navigation Station South",
-                        "node_name": "Door to Gravity Suit Tower"
+                        "region": "Burenia",
+                        "area": "Navigation Station South",
+                        "node": "Door to Gravity Suit Tower"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -12311,11 +12958,13 @@
                     "valid_starting_location": false,
                     "dock_type": "other",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Ammo Recharge South",
-                        "node_name": "Door to Gravity Suit Tower (Lower)"
+                        "region": "Burenia",
+                        "area": "Ammo Recharge South",
+                        "node": "Door to Gravity Suit Tower (Lower)"
                     },
                     "default_dock_weakness": "Open Passage",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -12420,11 +13069,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Gravity Suit Room",
-                        "node_name": "Door to Gravity Suit Tower (Lower)"
+                        "region": "Burenia",
+                        "area": "Gravity Suit Room",
+                        "node": "Door to Gravity Suit Tower (Lower)"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -12486,6 +13137,49 @@
                                                                                 "amount": 1,
                                                                                 "negate": false
                                                                             }
+                                                                        },
+                                                                        {
+                                                                            "type": "and",
+                                                                            "data": {
+                                                                                "comment": null,
+                                                                                "items": [
+                                                                                    {
+                                                                                        "type": "resource",
+                                                                                        "data": {
+                                                                                            "type": "items",
+                                                                                            "name": "Speed",
+                                                                                            "amount": 1,
+                                                                                            "negate": false
+                                                                                        }
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "or",
+                                                                                        "data": {
+                                                                                            "comment": null,
+                                                                                            "items": [
+                                                                                                {
+                                                                                                    "type": "resource",
+                                                                                                    "data": {
+                                                                                                        "type": "misc",
+                                                                                                        "name": "DoorLocks",
+                                                                                                        "amount": 1,
+                                                                                                        "negate": true
+                                                                                                    }
+                                                                                                },
+                                                                                                {
+                                                                                                    "type": "resource",
+                                                                                                    "data": {
+                                                                                                        "type": "events",
+                                                                                                        "name": "BureniaGravitySuitRoomStoreSpeed",
+                                                                                                        "amount": 1,
+                                                                                                        "negate": false
+                                                                                                    }
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    }
+                                                                                ]
+                                                                            }
                                                                         }
                                                                     ]
                                                                 }
@@ -12524,11 +13218,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Teleport to Ghavoran",
-                        "node_name": "Door to Gravity Suit Tower"
+                        "region": "Burenia",
+                        "area": "Teleport to Ghavoran",
+                        "node": "Door to Gravity Suit Tower"
                     },
                     "default_dock_weakness": "Charge Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -12568,11 +13264,13 @@
                     "valid_starting_location": false,
                     "dock_type": "other",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Ammo Recharge South",
-                        "node_name": "Door to Gravity Suit Tower (Upper)"
+                        "region": "Burenia",
+                        "area": "Ammo Recharge South",
+                        "node": "Door to Gravity Suit Tower (Upper)"
                     },
                     "default_dock_weakness": "Open Passage",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -12933,7 +13631,7 @@
                         "start_point_actor_name": "SP_AccessPoint_9",
                         "start_point_actor_def": "actordef:actors/logic/startpoint/charclasses/startpoint.bmsad"
                     },
-                    "valid_starting_location": true,
+                    "valid_starting_location": false,
                     "connections": {
                         "Door to Navigation Station South": {
                             "type": "and",
@@ -12960,11 +13658,13 @@
                     "valid_starting_location": false,
                     "dock_type": "tunnel",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Early Gravity Speedboost Room 1",
-                        "node_name": "Tunnel to Gravity Suit Tower"
+                        "region": "Burenia",
+                        "area": "Early Gravity Speedboost Room 1",
+                        "node": "Tunnel to Gravity Suit Tower"
                     },
                     "default_dock_weakness": "Morph Ball Tunnel",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -13062,12 +13762,41 @@
                                                                 }
                                                             },
                                                             {
-                                                                "type": "resource",
+                                                                "type": "or",
                                                                 "data": {
-                                                                    "type": "misc",
-                                                                    "name": "DoorLocks",
-                                                                    "amount": 1,
-                                                                    "negate": true
+                                                                    "comment": null,
+                                                                    "items": [
+                                                                        {
+                                                                            "type": "resource",
+                                                                            "data": {
+                                                                                "type": "events",
+                                                                                "name": "BureniaGravitySuitRoomStoreSpeed",
+                                                                                "amount": 1,
+                                                                                "negate": false
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "type": "and",
+                                                                            "data": {
+                                                                                "comment": null,
+                                                                                "items": [
+                                                                                    {
+                                                                                        "type": "resource",
+                                                                                        "data": {
+                                                                                            "type": "misc",
+                                                                                            "name": "DoorLocks",
+                                                                                            "amount": 1,
+                                                                                            "negate": true
+                                                                                        }
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "template",
+                                                                                        "data": "Lay Power Bomb"
+                                                                                    }
+                                                                                ]
+                                                                            }
+                                                                        }
+                                                                    ]
                                                                 }
                                                             }
                                                         ]
@@ -13230,11 +13959,13 @@
                     "valid_starting_location": false,
                     "dock_type": "tunnel",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Ammo Recharge South",
-                        "node_name": "Tunnel to Gravity Suit Tower"
+                        "region": "Burenia",
+                        "area": "Ammo Recharge South",
+                        "node": "Tunnel to Gravity Suit Tower"
                     },
                     "default_dock_weakness": "Morph Ball Tunnel",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -13265,11 +13996,13 @@
                     "valid_starting_location": false,
                     "dock_type": "other",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Ammo Recharge South",
-                        "node_name": "Dock to Gravity Suit Tower"
+                        "region": "Burenia",
+                        "area": "Ammo Recharge South",
+                        "node": "Dock to Gravity Suit Tower"
                     },
                     "default_dock_weakness": "Open Passage",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -13836,11 +14569,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Gravity Suit Tower",
-                        "node_name": "Dock to Ammo Recharge South (Lower)"
+                        "region": "Burenia",
+                        "area": "Gravity Suit Tower",
+                        "node": "Dock to Ammo Recharge South (Lower)"
                     },
                     "default_dock_weakness": "Sensor Lock Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -13883,11 +14618,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Gravity Suit Tower",
-                        "node_name": "Dock to Ammo Recharge South (Upper)"
+                        "region": "Burenia",
+                        "area": "Gravity Suit Tower",
+                        "node": "Dock to Ammo Recharge South (Upper)"
                     },
                     "default_dock_weakness": "Sensor Lock Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -13945,11 +14682,13 @@
                     "valid_starting_location": false,
                     "dock_type": "tunnel",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Gravity Suit Tower",
-                        "node_name": "Tunnel to Ammo Recharge South"
+                        "region": "Burenia",
+                        "area": "Gravity Suit Tower",
+                        "node": "Tunnel to Ammo Recharge South"
                     },
                     "default_dock_weakness": "Morph Ball Tunnel",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -13980,11 +14719,13 @@
                     "valid_starting_location": false,
                     "dock_type": "other",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Gravity Suit Tower",
-                        "node_name": "Dock to Ammo Recharge South (Middle)"
+                        "region": "Burenia",
+                        "area": "Gravity Suit Tower",
+                        "node": "Dock to Ammo Recharge South (Middle)"
                     },
                     "default_dock_weakness": "Open Passage",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -14062,11 +14803,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Gravity Suit Tower",
-                        "node_name": "Door to Gravity Suit Room (Upper)"
+                        "region": "Burenia",
+                        "area": "Gravity Suit Tower",
+                        "node": "Door to Gravity Suit Room (Upper)"
                     },
                     "default_dock_weakness": "Missile Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -14122,6 +14865,13 @@
                             "data": "Shoot Diffusion or Wave"
                         },
                         "Start Point": {
+                            "type": "and",
+                            "data": {
+                                "comment": null,
+                                "items": []
+                            }
+                        },
+                        "Event - Store Shinespark In Upper Room": {
                             "type": "and",
                             "data": {
                                 "comment": null,
@@ -14212,11 +14962,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Gravity Suit Tower",
-                        "node_name": "Door to Gravity Suit Room (Lower)"
+                        "region": "Burenia",
+                        "area": "Gravity Suit Tower",
+                        "node": "Door to Gravity Suit Room (Lower)"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -14308,7 +15060,7 @@
                         "start_point_actor_name": "SP_Checkpoint_GravitySuit",
                         "start_point_actor_def": "actordef:actors/logic/startpoint/charclasses/startpoint.bmsad"
                     },
-                    "valid_starting_location": true,
+                    "valid_starting_location": false,
                     "connections": {
                         "Door to Gravity Suit Tower (Upper)": {
                             "type": "and",
@@ -14342,11 +15094,13 @@
                     "valid_starting_location": false,
                     "dock_type": "tunnel",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Gravity Suit Room Access",
-                        "node_name": "Tunnel to Gravity Suit Room (Upper)"
+                        "region": "Burenia",
+                        "area": "Gravity Suit Room Access",
+                        "node": "Tunnel to Gravity Suit Room (Upper)"
                     },
                     "default_dock_weakness": "Morph Ball Tunnel",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -14394,11 +15148,13 @@
                     "valid_starting_location": false,
                     "dock_type": "tunnel",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Gravity Suit Room Access",
-                        "node_name": "Tunnel to Gravity Suit Room (Lower)"
+                        "region": "Burenia",
+                        "area": "Gravity Suit Room Access",
+                        "node": "Tunnel to Gravity Suit Room (Lower)"
                     },
                     "default_dock_weakness": "Morph Ball Tunnel",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -14482,6 +15238,31 @@
                             }
                         }
                     }
+                },
+                "Event - Store Shinespark In Upper Room": {
+                    "node_type": "event",
+                    "heal": false,
+                    "coordinates": {
+                        "x": 3000.0,
+                        "y": -11150.0,
+                        "z": 0.0
+                    },
+                    "description": "",
+                    "layers": [
+                        "default"
+                    ],
+                    "extra": {},
+                    "valid_starting_location": false,
+                    "event_name": "BureniaGravitySuitRoomStoreSpeed",
+                    "connections": {
+                        "Door to Gravity Suit Tower (Upper)": {
+                            "type": "and",
+                            "data": {
+                                "comment": null,
+                                "items": []
+                            }
+                        }
+                    }
                 }
             }
         },
@@ -14531,11 +15312,13 @@
                     "valid_starting_location": false,
                     "dock_type": "tunnel",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Gravity Suit Room",
-                        "node_name": "Tunnel to Gravity Suit Room Access (Upper)"
+                        "region": "Burenia",
+                        "area": "Gravity Suit Room",
+                        "node": "Tunnel to Gravity Suit Room Access (Upper)"
                     },
                     "default_dock_weakness": "Morph Ball Tunnel",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -14566,11 +15349,13 @@
                     "valid_starting_location": false,
                     "dock_type": "tunnel",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Gravity Suit Room",
-                        "node_name": "Tunnel to Gravity Suit Room Access (Lower)"
+                        "region": "Burenia",
+                        "area": "Gravity Suit Room",
+                        "node": "Tunnel to Gravity Suit Room Access (Lower)"
                     },
                     "default_dock_weakness": "Morph Ball Tunnel",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -14601,11 +15386,13 @@
                     "valid_starting_location": false,
                     "dock_type": "other",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Main Hub Tower Bottom",
-                        "node_name": "Dock to Gravity Suit Room Access"
+                        "region": "Burenia",
+                        "area": "Main Hub Tower Bottom",
+                        "node": "Dock to Gravity Suit Room Access"
                     },
                     "default_dock_weakness": "Open Passage",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -14679,11 +15466,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Main Hub Tower Bottom",
-                        "node_name": "Door to Storm Missile Gate Room"
+                        "region": "Burenia",
+                        "area": "Main Hub Tower Bottom",
+                        "node": "Door to Storm Missile Gate Room"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -14877,11 +15666,13 @@
                     "valid_starting_location": false,
                     "dock_type": "tunnel",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Main Hub Tower Bottom",
-                        "node_name": "Tunnel to Storm Missile Gate Room"
+                        "region": "Burenia",
+                        "area": "Main Hub Tower Bottom",
+                        "node": "Tunnel to Storm Missile Gate Room"
                     },
                     "default_dock_weakness": "Morph Ball Tunnel",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -14966,17 +15757,18 @@
                         "left_shield_entity": "{EMPTY}",
                         "left_shield_def": null,
                         "right_shield_entity": "{EMPTY}",
-                        "right_shield_def": null,
-                        "exclude_from_dock_rando": true
+                        "right_shield_def": null
                     },
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Save Station South",
-                        "node_name": "Door to Save Station South Access"
+                        "region": "Burenia",
+                        "area": "Save Station South",
+                        "node": "Door to Save Station South Access"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": true,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -15012,11 +15804,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Main Hub Tower Bottom",
-                        "node_name": "Door to Save Station South Access (Upper)"
+                        "region": "Burenia",
+                        "area": "Main Hub Tower Bottom",
+                        "node": "Door to Save Station South Access (Upper)"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -15056,11 +15850,13 @@
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Main Hub Tower Bottom",
-                        "node_name": "Door to Save Station South Access (Lower)"
+                        "region": "Burenia",
+                        "area": "Main Hub Tower Bottom",
+                        "node": "Door to Save Station South Access (Lower)"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -15125,17 +15921,18 @@
                         "left_shield_entity": "{EMPTY}",
                         "left_shield_def": null,
                         "right_shield_entity": "{EMPTY}",
-                        "right_shield_def": null,
-                        "exclude_from_dock_rando": true
+                        "right_shield_def": null
                     },
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Save Station South Access",
-                        "node_name": "Door to Save Station South"
+                        "region": "Burenia",
+                        "area": "Save Station South Access",
+                        "node": "Door to Save Station South"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": true,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -15166,7 +15963,7 @@
                         "start_point_actor_name": "savestation_001_platform",
                         "start_point_actor_def": "actordef:actors/props/weightactivatedplatform_save/charclasses/weightactivatedplatform_save.bmsad"
                     },
-                    "valid_starting_location": false,
+                    "valid_starting_location": true,
                     "connections": {
                         "Door to Save Station South Access": {
                             "type": "and",
@@ -15237,7 +16034,7 @@
                         "start_point_actor_name": "SP_Checkpoint_Hydrogiga_Dead",
                         "start_point_actor_def": "actordef:actors/logic/startpoint/charclasses/startpoint.bmsad"
                     },
-                    "valid_starting_location": true,
+                    "valid_starting_location": false,
                     "connections": {
                         "Event - Drogyga": {
                             "type": "and",
@@ -15393,11 +16190,13 @@
                     "valid_starting_location": false,
                     "dock_type": "other",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Drogyga Access",
-                        "node_name": "Dock to Drogyga Arena"
+                        "region": "Burenia",
+                        "area": "Drogyga Access",
+                        "node": "Dock to Drogyga Arena"
                     },
                     "default_dock_weakness": "Open Passage",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -15451,11 +16250,13 @@
                     "valid_starting_location": false,
                     "dock_type": "other",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Underneath Drogyga",
-                        "node_name": "Dock to Drogyga Arena"
+                        "region": "Burenia",
+                        "area": "Underneath Drogyga",
+                        "node": "Dock to Drogyga Arena"
                     },
                     "default_dock_weakness": "Open Passage",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {}
@@ -15540,17 +16341,18 @@
                         "left_shield_entity": "{EMPTY}",
                         "left_shield_def": null,
                         "right_shield_entity": "{EMPTY}",
-                        "right_shield_def": null,
-                        "exclude_from_dock_rando": true
+                        "right_shield_def": null
                     },
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Drogyga Eyedoor",
-                        "node_name": "Door to Drogyga Access"
+                        "region": "Burenia",
+                        "area": "Drogyga Eyedoor",
+                        "node": "Door to Drogyga Access"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": true,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -15635,11 +16437,13 @@
                     "valid_starting_location": false,
                     "dock_type": "other",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Drogyga Arena",
-                        "node_name": "Dock to Drogyga Access"
+                        "region": "Burenia",
+                        "area": "Drogyga Arena",
+                        "node": "Dock to Drogyga Access"
                     },
                     "default_dock_weakness": "Open Passage",
+                    "exclude_from_dock_rando": false,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {}
@@ -15694,17 +16498,18 @@
                         "left_shield_entity": "{EMPTY}",
                         "left_shield_def": null,
                         "right_shield_entity": "{EMPTY}",
-                        "right_shield_def": null,
-                        "exclude_from_dock_rando": true
+                        "right_shield_def": null
                     },
                     "valid_starting_location": false,
                     "dock_type": "door",
                     "default_connection": {
-                        "world_name": "Burenia",
-                        "area_name": "Transport to Ghavoran",
-                        "node_name": "Door to Save Station North"
+                        "region": "Burenia",
+                        "area": "Transport to Ghavoran",
+                        "node": "Door to Save Station North"
                     },
                     "default_dock_weakness": "Power Beam Door",
+                    "exclude_from_dock_rando": true,
+                    "incompatible_dock_weaknesses": [],
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -15735,7 +16540,7 @@
                         "start_point_actor_name": "savestation_002_platform",
                         "start_point_actor_def": "actordef:actors/props/weightactivatedplatform_save/charclasses/weightactivatedplatform_save.bmsad"
                     },
-                    "valid_starting_location": false,
+                    "valid_starting_location": true,
                     "connections": {
                         "Door to Transport to Ghavoran": {
                             "type": "and",

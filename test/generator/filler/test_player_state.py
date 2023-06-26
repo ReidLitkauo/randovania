@@ -16,8 +16,8 @@ from randovania.layout.base.logical_resource_action import LayoutLogicalResource
 def _default_filler_config() -> FillerConfiguration:
     return FillerConfiguration(
         randomization_mode=RandomizationMode.FULL,
-        minimum_random_starting_items=0,
-        maximum_random_starting_items=0,
+        minimum_random_starting_pickups=0,
+        maximum_random_starting_pickups=0,
         indices_to_exclude=frozenset(),
         logical_resource_action=LayoutLogicalResourceAction.RANDOMLY,
         first_progression_must_be_local=False,
@@ -70,13 +70,13 @@ def test_current_state_report(state_for_blank):
 @pytest.mark.parametrize("num_assigned_pickups", [0, 1])
 def test_filter_usable_locations(state_for_blank, must_be_local, num_assigned_pickups,
                                  randomization_mode, blank_pickup):
-    blank_wl = state_for_blank.game.world_list
+    blank_wl = state_for_blank.game.region_list
     state_for_blank.configuration = dataclasses.replace(state_for_blank.configuration,
                                                         randomization_mode=randomization_mode,
                                                         first_progression_must_be_local=must_be_local)
     state_for_blank.num_assigned_pickups = num_assigned_pickups
     second_state = MagicMock()
-    second_state.game.world_list.node_from_pickup_index.return_value.location_category = LocationCategory.MAJOR
+    second_state.game.region_list.node_from_pickup_index.return_value.location_category = LocationCategory.MAJOR
 
     locations_weighted = {
         (state_for_blank, PickupIndex(0)): 1,

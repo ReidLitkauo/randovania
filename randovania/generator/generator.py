@@ -9,14 +9,14 @@ from randovania.game_description.assignment import (PickupTarget, PickupTargetAs
 from randovania.game_description.game_description import GameDescription
 from randovania.game_description.resources.location_category import LocationCategory
 from randovania.game_description.resources.pickup_entry import PickupEntry
-from randovania.game_description.world.pickup_node import PickupNode
+from randovania.game_description.db.pickup_node import PickupNode
 from randovania.generator import dock_weakness_distributor
 from randovania.generator.filler.filler_library import (
     UnableToGenerate, filter_unassigned_pickup_nodes)
 from randovania.generator.filler.runner import (FillerResults, PlayerPool,
                                                 run_filler)
 from randovania.generator.hint_distributor import PreFillParams
-from randovania.generator.item_pool import pool_creator
+from randovania.generator.pickup_pool import pool_creator
 from randovania.layout import filtered_database
 from randovania.layout.base.available_locations import RandomizationMode
 from randovania.layout.base.base_configuration import BaseConfiguration
@@ -31,11 +31,11 @@ from randovania.layout.exceptions import InvalidConfiguration
 
 def _validate_item_pool_size(item_pool: list[PickupEntry], game: GameDescription,
                              configuration: BaseConfiguration) -> None:
-    min_starting_items = configuration.major_items_configuration.minimum_random_starting_items
-    if len(item_pool) > game.world_list.num_pickup_nodes + min_starting_items:
+    min_starting_items = configuration.standard_pickup_configuration.minimum_random_starting_pickups
+    if len(item_pool) > game.region_list.num_pickup_nodes + min_starting_items:
         raise InvalidConfiguration(
             "Item pool has {} items, which is more than {} (game) + {} (minimum starting items)".format(
-                len(item_pool), game.world_list.num_pickup_nodes, min_starting_items))
+                len(item_pool), game.region_list.num_pickup_nodes, min_starting_items))
 
 
 async def create_player_pool(rng: Random, configuration: BaseConfiguration,
@@ -50,7 +50,7 @@ async def create_player_pool(rng: Random, configuration: BaseConfiguration,
                                                                            player_index=player_index,
                                                                            rng_required=rng_required)
 
-    base_patches = dock_weakness_distributor.distribute_pre_fill_weaknesses(base_patches)
+    base_patches = dock_weakness_distributor.distribute_pre_fill_weaknesses(base_patches, rng)
 
     base_patches = await game_generator.hint_distributor.assign_pre_filler_hints(
         base_patches,
@@ -121,7 +121,7 @@ def _distribute_remaining_items(rng: Random,
 
     for player, filler_result in filler_results.player_results.items():
         split_major = modes[player] is RandomizationMode.MAJOR_MINOR_SPLIT
-        for pickup_node in filter_unassigned_pickup_nodes(filler_result.game.world_list.iterate_nodes(),
+        for pickup_node in filter_unassigned_pickup_nodes(filler_result.game.region_list.iterate_nodes(),
                                                           filler_result.patches.pickup_assignment):
             if split_major and pickup_node.location_category == LocationCategory.MAJOR:
                 major_pickup_nodes.append((player, pickup_node))

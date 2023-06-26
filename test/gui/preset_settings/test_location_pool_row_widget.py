@@ -4,8 +4,8 @@ import pytest
 
 from randovania.game_description.resources.location_category import LocationCategory
 from randovania.game_description.resources.pickup_index import PickupIndex
-from randovania.game_description.world.node_identifier import NodeIdentifier
-from randovania.game_description.world.pickup_node import PickupNode
+from randovania.game_description.db.node_identifier import NodeIdentifier
+from randovania.game_description.db.pickup_node import PickupNode
 from randovania.gui.preset_settings.location_pool_row_widget import LocationPoolRowWidget
 from randovania.gui.preset_settings.location_pool_tab import PresetLocationPool
 from randovania.interface_common.preset_editor import PresetEditor
@@ -58,7 +58,8 @@ def test_location_pool_row_actions(pickup_node, skip_qtbot):
 
 def test_location_pool_row_disabled_on_major_minor_split(customized_preset, echoes_game_description, skip_qtbot):
     # Setup
-    preset_editor = PresetEditor(customized_preset)
+    options = MagicMock()
+    preset_editor = PresetEditor(customized_preset, options)
 
     location_pool_tab = PresetLocationPool(preset_editor, echoes_game_description, MagicMock())
 

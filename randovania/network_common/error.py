@@ -1,3 +1,6 @@
+from typing import Self
+
+
 class BaseNetworkError(Exception):
 
     @classmethod
@@ -9,7 +12,7 @@ class BaseNetworkError(Exception):
         return None
 
     @property
-    def as_json(self):
+    def as_json(self) -> dict:
         return {
             "error": {
                 "code": self.code(),
@@ -18,8 +21,26 @@ class BaseNetworkError(Exception):
         }
 
     @classmethod
-    def from_detail(cls, detail) -> "BaseNetworkError":
+    def from_detail(cls, detail) -> Self:
         return cls()
+
+    @classmethod
+    def from_json(cls, data: dict) -> Self | None:
+        if "error" not in data:
+            return None
+
+        code = data["error"]["code"]
+        detail = data["error"]["detail"]
+
+        for ret_cls in BaseNetworkError.__subclasses__():
+            ret_cls: type[BaseNetworkError] = ret_cls
+            if code == ret_cls.code():
+                return ret_cls.from_detail(detail)
+
+        raise RuntimeError("Unknown error")
+
+    def __eq__(self, other):
+        return isinstance(other, type(self)) and self.detail == other.detail
 
 
 class NotLoggedIn(BaseNetworkError):
@@ -53,7 +74,7 @@ class InvalidAction(BaseNetworkError):
         return self.message
 
     @classmethod
-    def from_detail(cls, detail) -> "InvalidAction":
+    def from_detail(cls, detail) -> Self:
         return cls(detail)
 
     def __str__(self):
@@ -93,6 +114,8 @@ class RequestTimeout(BaseNetworkError):
 
 
 class UserNotAuthorized(BaseNetworkError):
+    """When the user is not authorized to log in to the server."""
+
     @classmethod
     def code(cls):
         return 8
@@ -111,23 +134,20 @@ class UnsupportedClient(BaseNetworkError):
         return self.message
 
     @classmethod
-    def from_detail(cls, detail) -> "UnsupportedClient":
+    def from_detail(cls, detail) -> Self:
         return cls(detail)
 
     def __str__(self):
         return f"Unsupported client: {self.message}"
 
 
-def decode_error(data: dict) -> BaseNetworkError | None:
-    if "error" not in data:
-        return None
+class WorldDoesNotExistError(BaseNetworkError):
+    @classmethod
+    def code(cls):
+        return 10
 
-    code = data["error"]["code"]
-    detail = data["error"]["detail"]
 
-    for cls in BaseNetworkError.__subclasses__():
-        cls: type[BaseNetworkError] = cls
-        if code == cls.code():
-            return cls.from_detail(detail)
-
-    raise RuntimeError("Unknown error")
+class WorldNotAssociatedError(BaseNetworkError):
+    @classmethod
+    def code(cls):
+        return 11

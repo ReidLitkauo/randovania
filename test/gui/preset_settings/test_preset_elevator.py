@@ -6,7 +6,7 @@ from PySide6 import QtCore
 import pytest
 
 from randovania.game_description import default_database
-from randovania.game_description.world.area_identifier import AreaIdentifier
+from randovania.game_description.db.area_identifier import AreaIdentifier
 from randovania.games.game import RandovaniaGame
 from randovania.games.prime1.layout import prime_configuration
 from randovania.gui.preset_settings.elevators_tab import PresetElevators
@@ -20,7 +20,8 @@ def test_on_preset_changed(skip_qtbot, preset_manager, game):
     # Setup
     base = preset_manager.default_preset_for_game(game).get_preset()
     preset = dataclasses.replace(base, uuid=uuid.UUID('b41fde84-1f57-4b79-8cd6-3e5a78077fa6'))
-    editor = PresetEditor(preset)
+    options = MagicMock()
+    editor = PresetEditor(preset, options)
     window = PresetElevators(editor, default_database.game_description_for(preset.game), MagicMock())
 
     # Run
@@ -47,7 +48,8 @@ def test_check_credits(skip_qtbot, preset_manager):
             ),
         )
     )
-    editor = PresetEditor(preset)
+    options = MagicMock()
+    editor = PresetEditor(preset, options)
     window = PresetElevators(editor, default_database.game_description_for(preset.game), MagicMock())
     window.on_preset_changed(editor.create_custom_preset_with())
 

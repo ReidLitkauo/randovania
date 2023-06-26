@@ -1,8 +1,8 @@
 from random import Random
 
 from randovania.game_description.game_patches import GamePatches
-from randovania.game_description.world.node_identifier import NodeIdentifier
-from randovania.generator.item_pool import pool_creator
+from randovania.game_description.db.node_identifier import NodeIdentifier
+from randovania.generator.pickup_pool import pool_creator
 
 
 def test_dread_pool_creator(dread_game_description, preset_manager):
@@ -20,7 +20,7 @@ def test_dread_pool_creator(dread_game_description, preset_manager):
     )
 
     # Assert
-    wl = dread_game_description.world_list
+    wl = dread_game_description.region_list
     c = NodeIdentifier.create
 
     locations = [
@@ -28,9 +28,9 @@ def test_dread_pool_creator(dread_game_description, preset_manager):
         for index in results.assignment.keys()
     ]
     assert locations == [
-        c("Burenia", "Drogyga Arena", "Pickup (Drogyga)"),
-        c("Cataris", "Above Z-57 Fight", "Pickup (Z-57)"),
+        c("Ghavoran", "Central Unit Access", "Pickup (Ice Missile)"),
         c("Ghavoran", "Golzuna Arena", "Pickup (Cross Bomb)"),
+        c("Ferenia", "Purple EMMI Arena", "Pickup (Wave Beam)"),
     ]
 
     assert len(results.to_place) == wl.num_pickup_nodes - 1 - len(results.assignment)

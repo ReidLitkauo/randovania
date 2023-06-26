@@ -36,6 +36,8 @@ class PresetTabRoot(QtWidgets.QWidget):
             self.root_layout.addWidget(self.current_tab)
             self.current_tab.on_preset_changed(editor.create_custom_preset_with())
             self.owner.set_visible_tab(self)
+            self.current_tab.update_experimental_visibility()
+            self.owner.update_experimental_visibility()
 
         return super().showEvent(arg)
 
@@ -74,10 +76,22 @@ class CustomizePresetDialog(QtWidgets.QDialog, Ui_CustomizePresetDialog):
             tab_widget = self.main_tab_widget.widget(i)
             if isinstance(tab_widget, QtWidgets.QTabWidget):
                 self.main_tab_widget.setTabVisible(i, tab_widget.count() > 0)
+       
 
         self.name_edit.textEdited.connect(self._edit_name)
+        self.description_edit.textChanged.connect(self._edit_description)       
         self.button_box.accepted.connect(self.accept)
         self.button_box.rejected.connect(self.reject)
+
+    def update_experimental_visibility(self):
+        for (parent, tabs) in [
+            (self.patches_tab_widget, [x for x in self._tab_types if x.uses_patches_tab()]),
+            (self.logic_tab_widget, [x for x in self._tab_types if not x.uses_patches_tab()]),
+        ]:
+            for i in range(0, parent.count()):
+                tab = tabs[i]
+                visible = (self.editor._options.experimental_settings or not tab.is_experimental())
+                parent.setTabVisible(i, visible)
 
     def set_visible_tab(self, tab: PresetTabRoot):
         if tab != self._current_tab:
@@ -88,12 +102,18 @@ class CustomizePresetDialog(QtWidgets.QDialog, Ui_CustomizePresetDialog):
     # Options
     def on_preset_changed(self, preset: Preset):
         common_qt_lib.set_edit_if_different(self.name_edit, preset.name)
+        common_qt_lib.set_edit_if_different_text(self.description_edit, preset.description)
         if (tab := self.current_preset_tab) is not None:
             tab.on_preset_changed(preset)
 
     def _edit_name(self, value: str):
         with self._editor as editor:
-            editor.name = value
+            editor.name = value  
+            
+    def _edit_description(self):
+        with self._editor as editor:
+            editor.description = self.description_edit.toPlainText() 
+            
 
     @property
     def editor(self):

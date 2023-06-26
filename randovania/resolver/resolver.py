@@ -7,11 +7,11 @@ from randovania.game_description.requirements.requirement_list import Requiremen
 from randovania.game_description.requirements.requirement_set import RequirementSet
 from randovania.game_description.resources.resource_info import ResourceInfo
 from randovania.game_description.resources.resource_type import ResourceType
-from randovania.game_description.world.event_node import EventNode
-from randovania.game_description.world.event_pickup import EventPickupNode
-from randovania.game_description.world.pickup_node import PickupNode
-from randovania.game_description.world.resource_node import ResourceNode
-from randovania.game_description.world.dock_lock_node import DockLockNode
+from randovania.game_description.db.event_node import EventNode
+from randovania.game_description.db.event_pickup import EventPickupNode
+from randovania.game_description.db.pickup_node import PickupNode
+from randovania.game_description.db.resource_node import ResourceNode
+from randovania.game_description.db.dock_lock_node import DockLockNode
 from randovania.layout import filtered_database
 from randovania.layout.base.base_configuration import BaseConfiguration
 from randovania.resolver import debug
@@ -21,34 +21,27 @@ from randovania.resolver.state import State
 
 
 def _simplify_requirement_list(self: RequirementList, state: State,
-                               dangerous_resources: frozenset[ResourceInfo],
                                ) -> RequirementList | None:
     items = []
     for item in self.values():
-        if item.negate:
-            return None
-
         if item.satisfied(state.resources, state.energy, state.resource_database):
             continue
 
         # We don't want to mark collecting a pickup/event node as a requirement to collecting that node.
         # This could be interesting for DockLock, as indicating it needs to be unlocked from the other side.
-        if item.resource.resource_type == ResourceType.NODE_IDENTIFIER:
+        if item.resource.resource_type in (ResourceType.NODE_IDENTIFIER, ResourceType.EVENT):
             continue
 
-        if item.resource not in dangerous_resources:
-            # An empty RequirementList is considered satisfied, so we don't have to add the trivial resource
-            items.append(item)
+        items.append(item)
 
     return RequirementList(items)
 
 
 def _simplify_additional_requirement_set(requirements: RequirementSet,
                                          state: State,
-                                         dangerous_resources: frozenset[ResourceInfo],
                                          ) -> RequirementSet:
     new_alternatives = [
-        _simplify_requirement_list(alternative, state, dangerous_resources)
+        _simplify_requirement_list(alternative, state)
         for alternative in requirements.alternatives
     ]
     return RequirementSet(alternative
@@ -71,8 +64,8 @@ def _is_major_or_key_pickup_node(action: ResourceNode, state: State) -> bool:
 
     if isinstance(pickup_node, PickupNode):
         target = state.patches.pickup_assignment.get(pickup_node.pickup_index)
-        return target is not None and (target.pickup.item_category.hinted_as_major or
-                                       target.pickup.item_category.is_key)
+        return target is not None and (target.pickup.pickup_category.hinted_as_major or
+                                       target.pickup.pickup_category.is_key)
     return False
 
 
@@ -166,7 +159,13 @@ async def _inner_advance_depth(state: State,
                 )
 
                 if new_result[0] is None:
-                    debug.log_rollback(state, True, True)
+                    additional = logic.get_additional_requirements(action).alternatives
+
+                    logic.set_additional_requirements(
+                        state.node,
+                        _simplify_additional_requirement_set(RequirementSet(additional), state)
+                    )
+                    debug.log_rollback(state, True, True, logic.get_additional_requirements(state.node))
 
                 # If a safe node was a dead end, we're certainly a dead end as well
                 return new_result
@@ -214,9 +213,7 @@ async def _inner_advance_depth(state: State,
 
     logic.set_additional_requirements(
         state.node,
-        _simplify_additional_requirement_set(additional_requirements,
-                                             state,
-                                             logic.game.dangerous_resources)
+        _simplify_additional_requirement_set(additional_requirements, state)
     )
     debug.log_rollback(state, has_action, False, logic.get_additional_requirements(state.node))
 

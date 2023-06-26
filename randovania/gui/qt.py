@@ -301,6 +301,10 @@ async def qt_main(app: QtWidgets.QApplication, data_dir: Path, args):
     from randovania.game_connection.game_connection import GameConnection
     app.game_connection = GameConnection(executor)
 
+    logging.info("Creating the tracker sharer")
+    from randovania.tracker_sharer.tracker_sharer import TrackerSharer
+    app.tracker_sharer = TrackerSharer(app, options)
+
     logging.info("Configuring qasync...")
     import qasync
 
